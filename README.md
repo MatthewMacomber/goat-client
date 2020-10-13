@@ -1,11 +1,11 @@
-# burble-client
+# goat-client
 GitHub Client: https://github.com/thinkful-ei-quail/goat-client
 GitHub Server: https://github.com/thinkful-ei-quail/goat-api
 
 Heroku:   TBA
 Vercel:   TBA
 
-Trello: https://trello.com/b/jlDSR9RT/burble
+Trello: https://trello.com/b/z6WS8HpV/goat
 
 
 Developer Team:
@@ -15,4 +15,4 @@ Patrick, Co-Product Manager
 Justin , Co-Design Lead
 Matt Macomber, QA Lead
 
-WHAT IS BURBLE?
+WHAT IS GOAT?
