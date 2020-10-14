@@ -1,4 +1,4 @@
 export default {
-  API_ENDPOINT: process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8080/api',
-  TOKEN_KEY: 'goatful-client-auth-token',
+  API_ENDPOINT: 'http://localhost:8000/api',
+  TOKEN_KEY: 'goat-client-auth-token'
 }
