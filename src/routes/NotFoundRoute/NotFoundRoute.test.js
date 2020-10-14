@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom';
-import Header from './Header'
+import NotFoundRoute from './NotFoundRoute'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<BrowserRouter><Header /></BrowserRouter>, div)
+  ReactDOM.render(<BrowserRouter><NotFoundRoute /></BrowserRouter>, div)
   ReactDOM.unmountComponentAtNode(div)
 })

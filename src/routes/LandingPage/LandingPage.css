@@ -1,13 +1,21 @@
-.landing {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    align-self: center;
-    text-align: center;
-    color: black;
-    margin: auto;
-    /* text-shadow:5px 5px 10px black; */
-    font-weight: bolder;
+.landingDisplay {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.landingHeader {
+  margin: 3%;
+}
+
+.landingBody {
+  margin: 3%;
+}
+
+button {
+  margin: 3%;
+}
+
+.introText {
+  background: rgba(0, 0, 0, .5)
 }

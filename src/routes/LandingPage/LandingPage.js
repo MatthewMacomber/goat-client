@@ -1,25 +1,17 @@
-import React from 'react'
-import './LandingPage.css'
+import React from 'react';
 import Header from '../../components/Header/Header'
 import Main from '../../components/Main/Main'
-
+import './LandingPage.css';
 
 const LandingPage = (props) => {
-  // const handleStart = () => {
-  //   const {history} = props 
-  //   history.push('./create-student')
-  // }
-
   return (
     <div>
       <Header />
       <section className="landing">
       <Main />
-       {/* <button className="here-button" onClick={() => handleStart()}>HERE</button> */}
        </section>
     </div>
-    )
-  }
+  );
+}
 
-
-export default LandingPage
+export default LandingPage;
