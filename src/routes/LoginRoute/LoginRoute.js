@@ -5,7 +5,6 @@ import './LoginRoute.css';
 
 export default class LoginPage extends Component {
   static defaultProps = {
-    location: {},
     history: {
       push: () => {}
     }
@@ -13,9 +12,8 @@ export default class LoginPage extends Component {
 
   handleLoginSuccess = () => {
     const {history} = this.props;
-    const destination = '/dashboard';
-    history.push(destination);
-    this.props.login(true);
+    history.push('/dashboard');
+    //this.props.login(true);
   };
 
   render() {
