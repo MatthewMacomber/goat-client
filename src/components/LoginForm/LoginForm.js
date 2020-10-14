@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import TokenService from '../../services/token-service';
+import {Link} from 'react-router-dom';
+import UserContext from '../../contexts/UserContext';
 import AuthApiService from '../../services/auth-api-service';
 import {Input, Button} from '../Utils/Utils';
 import './LoginForm.css'
@@ -11,11 +12,18 @@ export default class LoginForm extends Component {
 
   state = {error: null};
 
-  handleSubmitJwtAuth = ev => {
+  static contextType = UserContext;
+
+  firstInput = React.createRef()
+
+  componentDidMount() {
+    this.firstInput.current.focus()
+  }
+
+  handleSubmitAuth = ev => {
     ev.preventDefault();
     this.setState({error: null});
     const {user_name, password} = ev.target;
-    // TODO Change to use the usercontext.
     AuthApiService.postLogin({
       username: user_name.value,
       password: password.value,
@@ -23,7 +31,7 @@ export default class LoginForm extends Component {
       .then(res => {
         user_name.value = '';
         password.value = '';
-        TokenService.saveAuthToken(res.authToken); // TODO Change depending on actual server response.
+        this.context.processLogin(res.authToken);
         this.props.onLoginSuccess();
       })
       .catch(res => {
@@ -39,13 +47,14 @@ export default class LoginForm extends Component {
           {error && <p className='red'>{error}</p>}
         </div>
         <form className='LoginForm'
-          onSubmit={this.handleSubmitJwtAuth}
+          onSubmit={this.handleSubmitAuth}
         >
           <div className='user_name'>
             <label htmlFor='LoginForm__user_name'>
               User name:
             </label>
             <Input
+              ref={this.firstInput}
               name='user_name'
               required
               id='LoginForm__user_name'
@@ -62,9 +71,13 @@ export default class LoginForm extends Component {
               id='LoginForm__password'
             />
           </div>
-          <Button type='submit'>
-            Login
-          </Button>
+          <footer>
+            <Button type='submit'>
+              Login
+            </Button>
+            {' '}
+            <Link to='/register'>Need an account?</Link>
+          </footer>
         </form>
       </>
     );
