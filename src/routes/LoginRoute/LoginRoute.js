@@ -25,7 +25,7 @@ export default class LoginPage extends Component {
         <LoginForm
           onLoginSuccess={this.handleLoginSuccess}
         />
-        <p>Demo account: 'demo' --- Password: 'P4ssword!'</p>
+        <p>Demo account: 'demo' --- Password: 'P4ssword!'</p>{/* TODO Change demo account detail to use actual demo account */}
       </Section>
     );
   };
