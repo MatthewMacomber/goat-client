@@ -15,6 +15,7 @@ export default class LoginForm extends Component {
     ev.preventDefault();
     this.setState({error: null});
     const {user_name, password} = ev.target;
+    // TODO Change to use the usercontext.
     AuthApiService.postLogin({
       username: user_name.value,
       password: password.value,
