@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 //import TokenService from '../../services/token-service';
 //import AuthApiService from '../../services/auth-api-service';
+import {Input, Button} from '../Utils/Utils';
 import './LoginForm.css'
 
 export default class LoginForm extends Component {
@@ -45,7 +46,7 @@ export default class LoginForm extends Component {
             <label htmlFor='LoginForm__user_name'>
               User name:
             </label>
-            <input
+            <Input
               name='user_name'
               required
               id='LoginForm__user_name'
@@ -55,16 +56,16 @@ export default class LoginForm extends Component {
             <label htmlFor='LoginForm__password'>
               Password:
             </label>
-            <input
+            <Input
               name='password'
               type='password'
               required
               id='LoginForm__password'
             />
           </div>
-          <button type='submit'>
+          <Button type='submit'>
             Login
-          </button>
+          </Button>
         </form>
       </>
     );
