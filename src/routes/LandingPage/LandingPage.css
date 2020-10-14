@@ -1,0 +1,13 @@
+.landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    align-self: center;
+    text-align: center;
+    color: black;
+    margin: auto;
+    /* text-shadow:5px 5px 10px black; */
+    font-weight: bolder;
+}
