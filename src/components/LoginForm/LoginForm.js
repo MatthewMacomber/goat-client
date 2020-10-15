@@ -14,12 +14,6 @@ export default class LoginForm extends Component {
 
   static contextType = UserContext;
 
-  firstInput = React.createRef()
-
-  componentDidMount() {
-    this.firstInput.current.focus()
-  }
-
   handleSubmitAuth = ev => {
     ev.preventDefault();
     this.setState({error: null});
@@ -54,7 +48,6 @@ export default class LoginForm extends Component {
               User name:
             </label>
             <Input
-              ref={this.firstInput}
               name='user_name'
               required
               id='LoginForm__user_name'

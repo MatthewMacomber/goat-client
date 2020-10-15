@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Input, Required, Label } from '../Form/Form'
+import { Input, Required, Label } from '../Utils/Utils';
 import AuthApiService from '../../services/auth-api-service'
 import Button from '../Button/Button'
 import './RegistrationForm.css'
@@ -11,8 +11,6 @@ class RegistrationForm extends Component {
   }
 
   state = { error: null }
-
-  firstInput = React.createRef()
 
   handleSubmit = ev => {
     ev.preventDefault()
@@ -33,10 +31,6 @@ class RegistrationForm extends Component {
       })
   }
 
-  componentDidMount() {
-    this.firstInput.current.focus()
-  }
-
   render() {
     const { error } = this.state
     return (
@@ -52,7 +46,6 @@ class RegistrationForm extends Component {
             Enter your name<Required />
           </Label>
           <Input
-            ref={this.firstInput}
             id='registration-name-input'
             name='name'
             required
