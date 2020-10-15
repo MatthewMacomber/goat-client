@@ -3,7 +3,7 @@ import {Section} from '../../components/Utils/Utils';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import './LoginRoute.css';
 
-export default class LoginPage extends Component {
+export default class LoginRoute extends Component {
   static defaultProps = {
     history: {
       push: () => {}
