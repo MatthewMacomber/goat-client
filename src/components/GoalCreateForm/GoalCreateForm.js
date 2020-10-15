@@ -14,6 +14,7 @@ export default class GoalCreateForm extends Component {
 
   handleSubmitGoal = ev => {
     // Submit the goal. Set up once goal api service is ready.
+    // this.props.onGoalCreateSuccess(id);
   }
 
   render() {
