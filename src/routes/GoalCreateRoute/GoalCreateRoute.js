@@ -12,7 +12,9 @@ export default class GoalCreateRoute extends Component {
 
   handleGoalCreateSuccess = (id) => {
     const {history} = this.props;
-    history.push(`/goal/${id}`)
+    // history.push(`/goal/${id}`)
+    // Change this later
+    history.push(`/dashboard`)
   }
 
   render() {

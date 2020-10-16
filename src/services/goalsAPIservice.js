@@ -17,34 +17,18 @@ const GoalsApiService = {
               : res.json()
           );
       },
-    addGoal(
-        title,
-        description,
-        points,
-        complete,
-        user_id,
-        end_date,
-        archive
-      ) {
+    addGoal(goal) {
         return fetch(`${config.API_ENDPOINT}/goals`, {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
             'authorization': `Bearer ${TokenService.getAuthToken()}`
           },
-          body: JSON.stringify({
-            title,
-            description,
-            points,
-            complete,
-            user_id,
-            end_date,
-            archive
-          }),
+          body: JSON.stringify(goal),
         })
           .then(res =>
             (!res.ok)
-              ? res.json().then(e => Promise.reject(e))
+              ? res.json().then(e => Promise.reject(e.message))
               : res.json()
         );
     },  
