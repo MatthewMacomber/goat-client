@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Section} from '../../components/Utils/Utils';
 import GoalCreateForm from '../../components/GoalCreateForm/GoalCreateForm';
-import './GoalCreateForm.css';
+import './GoalCreateRoute.css';
 
 export default class GoalCreateRoute extends Component {
   static defaultProps = {
