@@ -37,9 +37,9 @@ export default class LoginForm extends Component {
     const {error} = this.state;
     return (
       <>
-        {/* <div role='alert'>
+        <div role='alert'>
           {error && <p className='red'>{error}</p>}
-        </div> */}
+        </div>
         <form className='LoginForm'
           onSubmit={this.handleSubmitAuth}
         >

@@ -34,7 +34,7 @@ function App() {
               component={DashboardRoute}
             />
             <PrivateRoute
-              path={'/goal/:id'}
+              path={'/create-goal'}
               component={GoalCreateRoute}
             />
             <Route

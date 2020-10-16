@@ -6,21 +6,12 @@ import GoalApiService from '../../services/goalsAPIservice'
 const GoalListPage = (props) => {
   const [goals, setGoals] = useState([])
 
-  const clickNewGoal = () => {
-    // Update this to match new API
-
-    GoalApiService.addGoal()
-      .then(newGoal => {
-        const newGoals = goals.slice();
-
-        newGoals.push(newGoal)
-        setGoals(newGoals)
-      })
-      .catch(e => console.log(e))
+  const handleClickCreate = () => {
+    const {history} = props;
+    history.push(`/create-goal`)
   }
 
   useEffect(() => {
-    // Update this to match new API
 
     GoalApiService.getGoal()
       .then(goals => {
@@ -44,7 +35,7 @@ const GoalListPage = (props) => {
           </div>
         );
       })}
-      <button onClick={() => clickNewGoal()}>Create New Goal</button>
+      <button onClick={() => handleClickCreate()}>Create New Goal</button>
     </div>
   );
   
