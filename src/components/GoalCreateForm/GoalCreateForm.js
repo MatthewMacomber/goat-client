@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-//import GoalContext from '../../contexts/GoalContext';
+import UserContext from '../../contexts/UserContext';
+import GoalsApiService from '../../services/goalsAPIservice';
 import {Label, Input, Button} from '../Utils/Utils';
 import './GoalCreateForm.css';
 
@@ -10,11 +11,33 @@ export default class GoalCreateForm extends Component {
 
   state = {error: null};
 
-  //static contextType = GoalContext;
+  static contextType = UserContext;
 
   handleSubmitGoal = ev => {
     // Submit the goal. Set up once goal api service is ready.
-    // this.props.onGoalCreateSuccess(id);
+    const {title, description, points, complete, end_date, archive} = ev.target;
+    GoalsApiService.addGoal({
+      title: title.value,
+      description: description.value,
+      points: points.value,
+      complete: complete.value,
+      user_id: this.context.user_id,
+      end_date: end_date.value,
+      archive: archive.value,
+    })
+      .then(goal => {
+        title.value = '';
+        description.value = '';
+        points.value = '';
+        complete.value = '';
+        end_date.value = '';
+        archive.value = '';
+        this.props.onGoalCreateSuccess(goal.id); // TODO make sure this is the correct format of returned data.
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
+    
   }
 
   render() {
