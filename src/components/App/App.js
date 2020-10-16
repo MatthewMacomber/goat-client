@@ -1,12 +1,15 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Header from '../Header/Header'
-// import PrivateRoute from '../PrivateRoute/PrivateRoute'
+import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute'
 import LandingPage from "../../routes/LandingPage/LandingPage";
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute'
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css';
+import LoginRoute from '../../routes/LoginRoute/LoginRoute'
+import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
+import GoalCreateRoute from '../../routes/GoalCreateRoute/GoalCreateRoute';
 
 function App() {
   return (
@@ -19,8 +22,20 @@ function App() {
               component={LandingPage}
             />
             <PublicOnlyRoute
+              path={'/login'}
+              component={LoginRoute}
+            />
+            <PublicOnlyRoute
               path={'/register'}
               component={RegistrationRoute}
+            />
+            <PrivateRoute
+              path={'/dashboard'}
+              component={DashboardRoute}
+            />
+            <PrivateRoute
+              path={'/goal/:id'}
+              component={GoalCreateRoute}
             />
             <Route
               component={NotFoundRoute}
