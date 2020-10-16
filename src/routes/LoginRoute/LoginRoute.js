@@ -23,7 +23,7 @@ export default class LoginRoute extends Component {
         <LoginForm
           onLoginSuccess={this.handleLoginSuccess}
         />
-        <p>Demo account: 'demo' --- Password: 'P4ssword!'</p>{/* TODO Change demo account detail to use actual demo account */}
+        <p>Demo account: 'admin' --- Password: 'pass'</p>{/* TODO Change demo account detail to use actual demo account */}
       </Section>
     );
   };
