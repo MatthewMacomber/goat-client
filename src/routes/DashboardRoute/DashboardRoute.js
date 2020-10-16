@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 // import './DashboardRoute.css';
-// import ShipApiService from '../../Services/ship-api-service';
 import { Link } from 'react-router-dom';
 import GoalApiService from '../../services/goalsAPIservice'
 
@@ -34,18 +33,18 @@ const GoalListPage = (props) => {
       <h1>
         My Goals
       </h1>
-      {props.ships.map((ship) => {
+      {goals.map((goal) => {
         return (
-          <div className="hangarDock" key={"ship-" + ship.id}>
-            <Link to={`/hangar/${ship.id}`}>
-              <div className="shipName">
-                {ship.ship_name}
+          <div className="goalList" key={"goal-" + goal.id}>
+            <Link to={`/goal/${goal.id}`}>
+              <div className="goalTitle">
+                {goal.title}
               </div>
             </Link>
           </div>
         );
       })}
-      <button onClick={() => clickNewGoal()}>Create New Ship</button>
+      <button onClick={() => clickNewGoal()}>Create New Goal</button>
     </div>
   );
   
