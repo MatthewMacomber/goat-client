@@ -1,0 +1,24 @@
+.NavBar {
+  margin: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  text-align: right;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px;
+
+}
+
+.NavLink {
+  z-index: -1;
+}
+
+.NavLink:hover {
+  color: red;
+}
+
+.Title {
+  padding-top: 6%;
+}

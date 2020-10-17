@@ -1,0 +1,21 @@
+.landingDisplay {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.landingHeader {
+  margin: 3%;
+}
+
+.landingBody {
+  margin: 3%;
+}
+
+button {
+  margin: 3%;
+}
+
+.introText {
+  background: rgba(0, 0, 0, .5)
+}
