@@ -27,7 +27,7 @@ class RegistrationForm extends Component {
         this.props.onRegistrationSuccess()
       })
       .catch(res => {
-        this.setState({ error: res.error })
+        this.setState({ error: res })
       })
   }
 

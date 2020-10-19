@@ -2,7 +2,7 @@ import config from '../config';
 
 const AuthApiService = {
   postUser(user) {
-    return fetch(`${config.API_ENDPOINT}/user`, {
+    return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -10,7 +10,7 @@ const AuthApiService = {
       body: JSON.stringify(user),
     })
     .then(res => {
-      return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json();
+      return (!res.ok) ? res.json().then(e => Promise.reject(e.message)) : res.json();
     });
   },
   postLogin({username, password}) {
@@ -22,7 +22,7 @@ const AuthApiService = {
       body: JSON.stringify({username, password}),
     })
     .then(res => {
-      return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json();
+      return (!res.ok) ? res.json().then(e => Promise.reject(e.message)) : res.json();
     })
   }
 }
