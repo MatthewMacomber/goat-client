@@ -6,8 +6,7 @@ import {Link} from 'react-router-dom';
 
 const LandingPage = (props) => {
     const handleStart = () => {
-        const { history } = props
-        history.push('./signup')
+        props.handleStart();
     }
 
     return (
