@@ -31,10 +31,16 @@ export class RewardProvider extends Component {
 
   loadRewards = () => {
     // Load rewards into context.
+    RewardService.getReward()
+      .then(rewards => {
+        this.setState({rewards});
+      })
+      .catch(this.setError);
   };
 
   addReward = (reward) => {
     // Add new reward to context after succesful submission to server.
+    this.setState({rewards: this.state.rewards.concat(reward)});
   };
 
   modifyReward = (id, option) => {
