@@ -43,8 +43,15 @@ export class GoalProvider extends Component {
     this.setState({goals: this.state.goals.concat(goal)});
   };
 
-  modifyGoal = (id) => {
+  modifyGoal = (id, option) => {
     // Modify goal, specifically for completeing or archiving goals.
+    if (option === 'complete') {
+      // Change goal with id to complete, server call with goal to complete.
+    } else if (option === 'archive') {
+      // Change goal with id to archived, server call with goal to archive.
+    } else {
+      this.setError({error: 'Incorrect option for modify goal'});
+    }
   };
 
   render() {
