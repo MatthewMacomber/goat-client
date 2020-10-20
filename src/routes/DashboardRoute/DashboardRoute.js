@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import GoalContext from '../../contexts/GoalContext';
 import Accordion from '../../components/Accordion/accordion';
 
@@ -12,10 +12,10 @@ const DashboardRoute = (props) => {
     history.push(`/create-goal`)
   };
 
-  onClick((id, complete) => {
+  const onClick = ((id, complete) => {
     goals.modifyGoal({id, complete: !complete})
     .then(() => setError(''))
-    .catch(res => setError(e));
+    .catch(res => setError(res));
   });
 
   return (
