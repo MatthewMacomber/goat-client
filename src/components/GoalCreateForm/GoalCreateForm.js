@@ -16,23 +16,19 @@ export default class GoalCreateForm extends Component {
   handleSubmitGoal = ev => {
     // Submit the goal. Set up once goal api service is ready.
     ev.preventDefault();
-    const {goal_title, goal_desc, goal_points, goal_complete, goal_end_date} = ev.target;
+    const {goal_title, goal_desc, goal_points, goal_end_date} = ev.target;
     GoalsApiService.addGoal({
       title: goal_title.value,
       description: goal_desc.value,
       points: goal_points.value,
-      // complete: goal_complete.value,
-      // user_id: this.context.user_id,
       end_date: new Date(Date.now()).toUTCString(),
-      archive: false,
     })
       .then(goal => {
         goal_title.value = '';
         goal_desc.value = '';
         goal_points.value = '';
-        // goal_complete.value = '';
         goal_end_date.value = '';
-        this.props.onGoalCreateSuccess(goal.id); // TODO make sure this is the correct format of returned data.
+        this.props.onGoalCreateSuccess(goal.id);
       })
       .catch(res => {
         this.setState({ error: res })
@@ -81,16 +77,6 @@ export default class GoalCreateForm extends Component {
               required
             />
           </div>
-          {/* <div>
-            <Label htmlFor='goal-complete-input'>
-              Complete:
-            </Label>
-            <Input
-              id='goal-complete-input'
-              name='goal_complete'
-              required
-            />
-          </div> */}
           <div>
             <Label htmlFor='goal-end-date-input'>
               End Date:
