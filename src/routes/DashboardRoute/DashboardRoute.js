@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import GoalsContext from '../../contexts/GoalsContext';
+import GoalContext from '../../contexts/GoalContext';
 import Accordion from '../../components/Accordion/accordion';
 
 const DashboardRoute = (props) => {
 
-  const goals = useContext(GoalsContext);
+  const goals = useContext(GoalContext);
   const [error, setError] = useState(0);
 
   const handleClickCreate = () => {
