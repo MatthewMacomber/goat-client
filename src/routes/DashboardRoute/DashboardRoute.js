@@ -1,44 +1,34 @@
-import React, { useState, useEffect } from 'react';
-// import './DashboardRoute.css';
-import { Link } from 'react-router-dom';
-import GoalApiService from '../../services/goalsAPIservice'
+import React, { useState } from 'react';
+import GoalsContext from '../../contexts/GoalsContext';
+import Accordion from '../../components/Accordion/accordion';
 
-const GoalListPage = (props) => {
-  const [goals, setGoals] = useState([])
+const DashboardRoute = (props) => {
+
+  const goals = useContext(GoalsContext);
+  const [error, setError] = useState(0);
 
   const handleClickCreate = () => {
     const {history} = props;
     history.push(`/create-goal`)
-  }
+  };
 
-  useEffect(() => {
-
-    GoalApiService.getGoal()
-      .then(goals => {
-        setGoals(goals);
-      })
-  },[setGoals])
+  onClick((id, complete) => {
+    goals.modifyGoal({id, complete: !complete})
+    .then(() => setError(''))
+    .catch(res => setError(e));
+  });
 
   return (
     <div>
-      <h1>
+      <h2>
         My Goals
-      </h1>
-      {goals.map((goal) => {
-        return (
-          <div className="goalList" key={"goal-" + goal.id}>
-            <Link to={`/goal/${goal.id}`}>
-              <div className="goalTitle">
-                {goal.title}
-              </div>
-            </Link>
-          </div>
-        );
-      })}
+      </h2>
+      {error && <p>{error}</p>}
+      <Accordion goals={goals.goals} onClick={onClick}/>
       <button onClick={() => handleClickCreate()}>Create New Goal</button>
     </div>
   );
   
 }
 
-export default GoalListPage;
+export default DashboardRoute;
