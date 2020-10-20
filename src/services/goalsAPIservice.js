@@ -31,7 +31,22 @@ const GoalsApiService = {
               ? res.json().then(e => Promise.reject(e.message))
               : res.json()
         );
-    },  
+    },
+    modifyGoal(modify) {
+      return fetch(`${config.API_ENDPOINT}/goals`, {
+        method: 'PATCH',
+        headers: {
+          'content-type': 'application/json',
+          'authorization': `Bearer ${TokenService.getAuthToken()}`
+        },
+        body: JSON.stringify(modify)
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e.message))
+            : res.json()
+        );
+    }
 };
 
 export default GoalsApiService;
