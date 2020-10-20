@@ -30,7 +30,7 @@ export class GoalProvider extends Component {
   };
 
   loadGoals = () => {
-    // load goals into context.
+    // Load goals into context.
     GoalService.getGoal()
       .then(goals => {
         this.setState({goals});
@@ -39,7 +39,7 @@ export class GoalProvider extends Component {
   };
 
   addGoal = (goal) => {
-    // Add new goal to context after succesful submition to server.
+    // Add new goal to context after succesful submission to server.
     this.setState({goals: this.state.goals.concat(goal)});
   };
 
