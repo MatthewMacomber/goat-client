@@ -15,6 +15,8 @@ class Header extends Component {
     return (
       <div>
         <nav>
+          <Link to='/dashboard' className='NavLink'>Dashboard</Link>
+          {' | '}
           <Link
             className='NavLink'
             onClick={this.handleLogoutClick}
@@ -44,7 +46,7 @@ class Header extends Component {
       <header>
         <h1 className='Title'>
           <Link to='/' className='TitleLink'>
-            Goatful
+            Goat
           </Link>
         </h1>
         <div className='NavBar'>

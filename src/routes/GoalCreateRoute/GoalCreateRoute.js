@@ -9,6 +9,7 @@ export default class GoalCreateRoute extends Component {
       push: () => {}
     }
   };
+  
 
   handleGoalCreateSuccess = (id) => {
     const {history} = this.props;
