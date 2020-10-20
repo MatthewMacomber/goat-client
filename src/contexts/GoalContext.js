@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GoalService from '../services/goalsAPIservice';
 
 const GoalContext = React.createContext({
   goals: [],
@@ -30,13 +31,19 @@ export class GoalProvider extends Component {
 
   loadGoals = () => {
     // load goals into context.
+    GoalService.getGoal()
+      .then(goals => {
+        this.setState({goals});
+      })
+      .catch(res => this.setError(res));
   };
 
-  addGoal = () => {
+  addGoal = (goal) => {
     // Add new goal to context after succesful submition to server.
+    this.setState({goals: this.state.goals.concat(goal)});
   };
 
-  modifyGoal = () => {
+  modifyGoal = (id) => {
     // Modify goal, specifically for completeing or archiving goals.
   };
 
