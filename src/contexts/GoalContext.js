@@ -51,7 +51,7 @@ export class GoalProvider extends Component {
         .then(res => {
           let modGoals = this.state.goals;
           modGoals[id].complete = true;
-          this.setState({goals: modGoals})
+          this.setState({goals: modGoals});
         })
         .catch(this.setError);
     } else if (option === 'archive') {

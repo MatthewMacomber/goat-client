@@ -44,7 +44,28 @@ export class RewardProvider extends Component {
   };
 
   modifyReward = (id, option) => {
-    // Modify reward, specifically for achieving or archiving rewareds.
+    // Modify reward, specifically for purchasing or archiving rewareds.
+    if (option === 'purchased') {
+      // Change reward with id to purchased, server call with rewared to purchase.
+      RewardService.modifyReward({id, option})
+        .then(res => {
+          let modRewards = this.state.rewards;
+          modRewards[id].purchased = true;
+          this.setState({rewards: modRewards});
+        })
+        .catch(this.setError);
+    } else if (option === 'archive') {
+      // Change reward with id to archived, server call with reward to archive.
+      RewardService.modifyReward({id, option})
+        .then(res => {
+          let modRewards = this.state.rewards;
+          modRewards[id].archived = true;
+          this.setState({rewards: modRewards});
+        })
+        .catch(this.setError);
+    } else {
+      this.setError({error: 'Incorrect option for modify reward'})
+    }
   };
 
   render() {
