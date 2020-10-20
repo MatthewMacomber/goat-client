@@ -35,7 +35,7 @@ export class GoalProvider extends Component {
       .then(goals => {
         this.setState({goals});
       })
-      .catch(res => this.setError(res));
+      .catch(this.setError);
   };
 
   addGoal = (goal) => {
@@ -46,9 +46,23 @@ export class GoalProvider extends Component {
   modifyGoal = (id, option) => {
     // Modify goal, specifically for completeing or archiving goals.
     if (option === 'complete') {
-      // TODO Change goal with id to complete, server call with goal to complete.
+      // Change goal with id to complete, server call with goal to complete.
+      GoalService.modifyGoal({id, option})
+        .then(res => {
+          let modGoals = this.state.goals;
+          modGoals[id].complete = true;
+          this.setState({goals: modGoals})
+        })
+        .catch(this.setError);
     } else if (option === 'archive') {
-      // TODO Change goal with id to archived, server call with goal to archive.
+      // Change goal with id to archived, server call with goal to archive.
+      GoalService.modifyGoal({id, option})
+        .then(res => {
+          let modGoals = this.state.goals;
+          modGoals[id].archived = true;
+          this.setState({goals: modGoals})
+        })
+        .catch(this.setError);
     } else {
       this.setError({error: 'Incorrect option for modify goal'});
     }
