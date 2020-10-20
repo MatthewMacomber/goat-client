@@ -46,9 +46,9 @@ export class GoalProvider extends Component {
   modifyGoal = (id, option) => {
     // Modify goal, specifically for completeing or archiving goals.
     if (option === 'complete') {
-      // Change goal with id to complete, server call with goal to complete.
+      // TODO Change goal with id to complete, server call with goal to complete.
     } else if (option === 'archive') {
-      // Change goal with id to archived, server call with goal to archive.
+      // TODO Change goal with id to archived, server call with goal to archive.
     } else {
       this.setError({error: 'Incorrect option for modify goal'});
     }
