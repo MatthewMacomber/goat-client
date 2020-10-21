@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import TokenService from '../../services/token-service';
 import UserContext from '../../contexts/UserContext';
 import './PointTracker.css';
 
 export default class PointTracker extends Component {
-  // Point tracker.
+  static contextType = UserContext;
 
   render() {
+    const {points} = this.context;
     return (
-      <>
-      </>
+      <div>
+        <p>Goat Points: {points}</p>
+      </div>
     )
   }
 }
