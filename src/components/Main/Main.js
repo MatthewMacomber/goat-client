@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-// import './Main.css';
+import './Main.css';
 
 
 
@@ -13,7 +13,7 @@ const LandingPage = (props) => {
         <div>
              <section className='main'>
                  <p>
-                     Goat is a free goal tracking app that allows the user to create new goals, earn points for goals completed, and redeem those points for rewards.
+                     Goat is a free goal tracking app that allows you to create new goals, earn points for goals completed, and redeem those points for rewards. Move your goat to the top of the mountain by completing all of the goals that you've set, but if you don't complete them by the date set, you lose points.
                  </p>
              </section> 
              <br/>

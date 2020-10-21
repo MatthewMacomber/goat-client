@@ -12,6 +12,11 @@ const DashboardRoute = (props) => {
     history.push(`/create-goal`)
   };
 
+  const handleRewardList = () => {
+    const {history} = props;
+    history.push(`/rewards-list`)
+  };
+
   const onClick = ((id, complete) => {
     goals.modifyGoal({id, complete: !complete})
     .then(() => setError(''))
@@ -26,6 +31,7 @@ const DashboardRoute = (props) => {
       {error && <p>{error}</p>}
       <Accordion goals={goals.goals} onClick={onClick}/>
       <button onClick={() => handleClickCreate()}>Create New Goal</button>
+      <button onClick={() => handleRewardList()}>View Rewards</button>
     </div>
   );
   

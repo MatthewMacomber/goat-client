@@ -10,6 +10,7 @@ import './App.css';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute'
 import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
 import GoalCreateRoute from '../../routes/GoalCreateRoute/GoalCreateRoute';
+import RewardListRoute from '../../routes/RewardListRoute/RewardListRoute';
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
             <PrivateRoute
               path={'/create-goal'}
               component={GoalCreateRoute}
+            />
+            <PrivateRoute
+              path={'/rewards-list'}
+              component={RewardListRoute}
             />
             <Route
               component={NotFoundRoute}

@@ -18,14 +18,18 @@ export default class GoalCreateRoute extends Component {
     history.push(`/dashboard`)
   }
 
+
   render() {
     return (
-      <Section className='GoalCreatePage'>
+      <div>
+        <Section className='GoalCreatePage'>
         <h2>Create Goal</h2>
         <GoalCreateForm
           onGoalCreateSuccess={this.handleGoalCreateSuccess}
         />
       </Section>
+      </div>
     )
   }
 }
+
