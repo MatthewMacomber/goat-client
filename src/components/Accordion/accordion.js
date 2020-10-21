@@ -2,36 +2,18 @@ import React from 'react';
 
 
 export default class Accordion extends React.Component {
-    state = {
-        selectedId : null
-    }
-    goals = [
-        {
-            id: 1,
-            title: 'make the bed',
-            description: 'i will make my bed every day',
-            points: 5,
-            end_date: '2020-01-01',
-            complete: false
-        },
-        {
-            id: 2,
-            title: 'take out trash',
-            description: 'i will make my bed every day',
-            points: 5,
-            end_date: '2020-01-01',
-            complete: false
-        },
-        {
-            id: 3,
-            title: 'mop the kitchen',
-            description: 'i will make my bed every day',
-            points: 5,
-            end_date: '2020-01-01',
-            complete: false
+    constructor(props) {
+        super(props);
+        console.log("Accordion -> constructor -> props", props)
+        this.state = {
+            selectedId : null,
+            goals : this.props.goals
         }
-        
-    ] 
+    }
+    
+
+    
+    
 
     selectedId = null;
 
@@ -66,9 +48,10 @@ export default class Accordion extends React.Component {
     }
 
     render = () => {
+        console.log("Accordion -> goals", this.state.goals)
         return(
             <ul>
-                {this.populate(this.goals)}
+                {this.populate(this.state.goals)}
             </ul>
         )
     }

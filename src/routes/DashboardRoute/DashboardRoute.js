@@ -1,11 +1,23 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import GoalContext from '../../contexts/GoalContext';
 import Accordion from '../../components/Accordion/accordion';
+import GoalService from '../../services/goalsAPIservice';
 
 const DashboardRoute = (props) => {
 
-  const goals = useContext(GoalContext);
-  const [error, setError] = useState(0);
+  // const goals = useContext(GoalContext);
+  // console.log("DashboardRoute -> goals", goals.value)
+  const [error, setError] = useState('');
+  const [goals, setGoals] = useState([]);
+
+  useEffect(() => {
+    GoalService.getGoal()
+    .then(goals => {
+      console.log(goals);
+      setGoals(goals);
+    })
+    .catch(setError);
+  },[setGoals])
 
   const handleClickCreate = () => {
     const {history} = props;
@@ -23,13 +35,14 @@ const DashboardRoute = (props) => {
     .catch(res => setError(res));
   });
 
+  console.log('Dashboard goals: ', goals);
   return (
     <div>
       <h2>
         My Goals
       </h2>
       {error && <p>{error}</p>}
-      <Accordion goals={goals.goals} onClick={onClick}/>
+      <Accordion goals={goals} onClick={onClick}/>
       <button onClick={() => handleClickCreate()}>Create New Goal</button>
       <button onClick={() => handleRewardList()}>View Rewards</button>
     </div>

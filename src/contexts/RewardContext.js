@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RewardService from '../services/rewardsApiservice';
+import RewardService from '../services/rewards-api-service';
 
 const RewardContext = React.createContext({
   rewards: [],

@@ -39,6 +39,7 @@ export default class GoalCreateForm extends Component {
         this.props.onGoalCreateSuccess(goal.id); // TODO make sure this is the correct format of returned data.
       })
       .catch(res => {
+      console.log("GoalCreateForm -> res", res)
         this.setState({ error: res })
       })  
   }
