@@ -11,12 +11,18 @@ export default class RewardListRoute extends Component {
     }
   };
   
+  handleClickCreate = () => {
+    const {history} = this.props;
+    history.push(`/create-reward`)
+  };
 
   render() {
     return (
-     <div>
-       <RewardListForm></RewardListForm>
-     </div>
+      <div>
+        <RewardListForm></RewardListForm>
+        <button onClick={() => this.handleClickCreate()}>Create New Reward</button>
+
+      </div>
     )
   }
 }
