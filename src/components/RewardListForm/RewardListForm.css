@@ -1,0 +1,16 @@
+.rewards-list-options{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+    border: 1px solid black;
+    width: 40%;
+    align-items: center;
+    padding: 0;
+
+}
+
+.rewards-list{
+    text-align: center;
+    padding: 0;
+}

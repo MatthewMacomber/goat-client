@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Section} from '../../components/Utils/Utils';
-import GoalCreateForm from '../../components/GoalCreateForm/GoalCreateForm';
-import './GoalCreateRoute.css';
+import RewardCreateForm from '../../components/RewardCreateForm/RewardCreateForm';
+import './RewardCreatePage.css';
 
-export default class GoalCreateRoute extends Component {
+export default class RewardCreatePage extends Component {
   static defaultProps = {
     history: {
       push: () => {}
@@ -11,7 +11,7 @@ export default class GoalCreateRoute extends Component {
   };
   
 
-  handleGoalCreateSuccess = (id) => {
+  handleRewardCreateSuccess = (id) => {
     const {history} = this.props;
     // history.push(`/goal/${id}`)
     // Change this later
@@ -23,9 +23,9 @@ export default class GoalCreateRoute extends Component {
     return (
       <div>
         <Section className='GoalCreatePage'>
-        <h2>Create Goal</h2>
-        <GoalCreateForm
-          onGoalCreateSuccess={this.handleGoalCreateSuccess}
+        <h2>Create Reward</h2>
+        <RewardCreateForm
+          onRewardCreateSuccess={this.handleRewardCreateSuccess}
         />
       </Section>
       </div>
