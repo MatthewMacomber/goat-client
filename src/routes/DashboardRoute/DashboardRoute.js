@@ -11,14 +11,13 @@ const DashboardRoute = (props) => {
   const [error, setError] = useState(null);
   //const [goals, setGoals] = useState([]);
   const [completingGoal, setCompletingGoal] = useState(null);
+  const [goalsLoaded, setGoalsLoaded] = useState(false);
 
-  /*useEffect(() => {
-    GoalService.getGoal()
-    .then(goals => {
-      setGoals(goals);
-    })
-    .catch(setError);
-  },[])*/
+  useEffect(() => {
+    goals.loadGoals()
+    .then(() => {setGoalsLoaded(true)})
+    
+  },[])
 
   const handleClickCreate = () => {
     const {history} = props;
@@ -29,11 +28,6 @@ const DashboardRoute = (props) => {
     const {history} = props;
     history.push(`/rewards-list`)
   };
-
-  const onClick = ((id, complete) => {
-    goals.modifyGoal({id, complete: !complete})
-      .then(() => setError(null));
-  });
 
   const completeGoal = (goal) => {
     goals.modifyGoal({id: goal.id, complete: true})
@@ -56,11 +50,16 @@ const DashboardRoute = (props) => {
             noFunction={cancelPopUp}/>
   }
 
+  const setIncomplete = (goal) => {
+    console.log('Set Incomplete clicked');
+    goals.modifyGoal(goal.id, 'archive')
+  }
+
   const renderGoalsPage = () => {
     return (
       <div>
         {error && <p>{error}</p>}
-        <Accordion items={goals.goals} onClick={setCompletingGoal}/>
+        {goalsLoaded ? <Accordion goals={goals.goals} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/> : null}
         <button onClick={() => handleClickCreate()}>Create New Goal</button>
         <button onClick={() => handleRewardList()}>View Rewards</button>
       </div>
@@ -75,9 +74,6 @@ const DashboardRoute = (props) => {
       {error && <p>{error}</p>}
       {completingGoal && renderCompletePopUp()}
       {!completingGoal && renderGoalsPage()}
-      {goals.goals.length !== 0 ? <Accordion goals={goals.goals} onClick={onClick}/> : null}
-      <button onClick={() => handleClickCreate()}>Create New Goal</button>
-      <button onClick={() => handleRewardList()}>View Rewards</button>
     </div>
   );
   

@@ -1,9 +1,11 @@
 import React from 'react';
+import GoalContext from '../../contexts/GoalContext';
 import './accordion.css';
 
 export default class Accordion extends React.Component {
   constructor(props) {
     super(props);
+    console.log("Accordion -> constructor -> props", props)
     this.state = {
       selectedId : null,
       goals : this.props.goals
@@ -31,6 +33,10 @@ export default class Accordion extends React.Component {
                 <p>{goal.points}</p>
                 <p>{new Date(goal.end_date).toLocaleDateString("en-US")}</p>
                 <p>{goal.complete}</p>
+              
+                <p>This goal has expired. Would you like to mark this as completed or not completed?</p>
+                <button onClick={() => this.props.onCompleteClicked(goal)}>Completed</button>
+                <button onClick={() => this.props.onIncompleteClicked(goal)}>Not Completed</button>
               </div>
             </div>
           )
