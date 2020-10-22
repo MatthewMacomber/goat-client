@@ -18,7 +18,7 @@ export default class GoatAnim extends Component {
 
   render() {
 
-    let max = (this.max - this.current);
+    let max = (this.state.max - this.state.current);
     let currentPercent = (this.state.current / this.state.max * 100);
     let maxPercent = (100 - currentPercent);
 
@@ -26,7 +26,7 @@ export default class GoatAnim extends Component {
       <div>
         <div className='goatAnimBar'>
           <div className='cliffSection current' style={{'width': currentPercent + '%'}}></div>
-          <div id='left' className='cliffSection left' style={{'width': maxPercent + '%'}}><p>${max} left</p></div>
+          <div id='left' className='cliffSection left' style={{'width': maxPercent + '%'}}><p>0{max} Points left</p></div>
         </div>
       </div>
     )
