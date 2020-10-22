@@ -20,6 +20,10 @@ export class GoalProvider extends Component {
     this.state = state;
   };
 
+  componentDidMount = () => {
+    this.loadGoals();
+  }
+
   setError = (error) => {
     console.log(error);
     this.setState({error});
