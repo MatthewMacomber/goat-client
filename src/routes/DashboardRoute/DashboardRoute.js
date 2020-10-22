@@ -1,13 +1,24 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import GoalContext from '../../contexts/GoalContext';
 import Accordion from '../../components/Accordion/accordion';
 import RedemptionPopUp from '../../components/RedemptionPopUp/RedemptionPopUp';
+import GoalService from '../../services/goalsAPIservice';
 
 const DashboardRoute = (props) => {
 
-  const goals = useContext(GoalContext);
+  // const goals = useContext(GoalContext);
+  // console.log("DashboardRoute -> goals", goals.value)
   const [error, setError] = useState(null);
+  const [goals, setGoals] = useState([]);
   const [completingGoal, setCompletingGoal] = useState(null);
+
+  useEffect(() => {
+    GoalService.getGoal()
+    .then(goals => {
+      setGoals(goals);
+    })
+    .catch(setError);
+  },[])
 
   const handleClickCreate = () => {
     const {history} = props;
@@ -56,8 +67,12 @@ const DashboardRoute = (props) => {
       <h2>
         My Goals
       </h2>
+      {error && <p>{error}</p>}
       {completingGoal && renderCompletePopUp()}
       {!completingGoal && renderGoalsPage()}
+      {goals.length !== 0 ? <Accordion goals={goals} onClick={onClick}/> : null}
+      <button onClick={() => handleClickCreate()}>Create New Goal</button>
+      <button onClick={() => handleRewardList()}>View Rewards</button>
     </div>
   );
   
