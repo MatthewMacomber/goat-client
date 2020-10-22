@@ -14,6 +14,9 @@ export default class Accordion extends React.Component {
 
   populate = (goals) => {
     let html = [];
+    if (!goals) {
+      return html;
+    }
     for(let goal of goals){
       if(goal.id === this.state.selectedId){
         if(new Date(goal.end_date).getTime() < new Date().getTime()){
