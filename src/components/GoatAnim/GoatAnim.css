@@ -1,0 +1,28 @@
+.goatAnimBar {
+  width:100%;
+  height: 20px;
+  border: 2px #000 solid;
+}
+
+.cliffSection {
+  display: inline-block;
+  height: 20px;
+  font-size: 10pt;
+  vertical-align: top;
+  text-align: center;
+}
+
+.cliffSection p {
+  margin: 0;
+  padding: 3px;
+}
+
+.current {
+  background-color: green;
+  transition: width is ease-in-out;
+}
+
+.left {
+  background-color: #ccc;
+  transition: width is ease-in-out;
+}
