@@ -1,63 +1,32 @@
 import React from 'react';
 
-
 export default class Accordion extends React.Component {
     state = {
         selectedId : null
     }
-    goals = [
-        {
-            id: 1,
-            title: 'make the bed',
-            description: 'i will make my bed every day',
-            points: 5,
-            end_date: '2020-01-01',
-            complete: false
-        },
-        {
-            id: 2,
-            title: 'take out trash',
-            description: 'i will make my bed every day',
-            points: 5,
-            end_date: '2020-01-01',
-            complete: false
-        },
-        {
-            id: 3,
-            title: 'mop the kitchen',
-            description: 'i will make my bed every day',
-            points: 5,
-            end_date: '2020-01-01',
-            complete: false
-        }
-        
-    ] 
 
-    selectedId = null;
+    static defaultProps = {
+        items: [],
+    }
 
-    populate = (goals) => {
+    populate = (items) => {
         let html = [];
-        for(let goal of goals){
-           if(goal.id === this.state.selectedId){
+        for(let item of items){
+            const {id, title, description, points, end_date} = item;
+            if(id === this.state.selectedId){
             html.push(
-                <li key = {goal.id}>
-                    <button onClick={() => {
-                        this.setState({selectedId : goal.id})
-                        console.log(this.state)
-                    }}>{goal.title}</button>
-                    <p>{goal.description}</p>
-                    <p>{goal.points}</p>
-                    <p>{goal.end_date}</p>
-                    <p>{goal.complete}</p>
+                <li key = {id}>
+                    <button onClick={() => {this.setState({selectedId : null})}}>{title}</button>
+                    <p>{description ? description : ''}</p>
+                    <p>{points}</p>
+                    <p>{end_date ? end_date : ''}</p>
+                    <button onClick={() => this.props.onClick(item)}>{end_date ? 'Complete' : 'Redeem'}</button>
                 </li>
             )
-           } else {
+            } else {
             html.push(
-                <li key = {goal.id}>
-                    <button onClick={() => {
-                        this.setState({selectedId : goal.id})
-                        console.log(this.state)
-                    }}>{goal.title}</button>
+                <li key = {id}>
+                    <button onClick={() => {this.setState({selectedId : id})}}>{title}</button>
                 </li>
             )
            }
@@ -68,7 +37,7 @@ export default class Accordion extends React.Component {
     render = () => {
         return(
             <ul>
-                {this.populate(this.goals)}
+                {this.populate(this.props.items)}
             </ul>
         )
     }
