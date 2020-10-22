@@ -30,6 +30,11 @@ const DashboardRoute = (props) => {
     history.push(`/rewards-list`)
   };
 
+  const onClick = ((id, complete) => {
+    goals.modifyGoal({id, complete: !complete})
+      .then(() => setError(null));
+  });
+
   const completeGoal = (goal) => {
     goals.modifyGoal({id: goal.id, complete: true})
     .then(() => {
@@ -70,7 +75,7 @@ const DashboardRoute = (props) => {
       {error && <p>{error}</p>}
       {completingGoal && renderCompletePopUp()}
       {!completingGoal && renderGoalsPage()}
-      {goals.goals.length !== 0 ? <Accordion goals={goals.goals} /> : null}{/* onClick={onClick} */}
+      {goals.goals.length !== 0 ? <Accordion goals={goals.goals} onClick={onClick}/> : null}
       <button onClick={() => handleClickCreate()}>Create New Goal</button>
       <button onClick={() => handleRewardList()}>View Rewards</button>
     </div>
