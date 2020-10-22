@@ -1,9 +1,11 @@
 import React from 'react';
+import GoalContext from '../../contexts/GoalContext';
 import './accordion.css';
 
 export default class Accordion extends React.Component {
   constructor(props) {
     super(props);
+    console.log("Accordion -> constructor -> props", props)
     this.state = {
       selectedId : null,
       goals : this.props.goals
