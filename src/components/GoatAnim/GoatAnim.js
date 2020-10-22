@@ -26,7 +26,7 @@ export default class GoatAnim extends Component {
       <div>
         <div className='goatAnimBar'>
           <div id='left' className='cliffSection left' style={{'width': maxPercent + '%'}}><p>{max} Points left</p></div>
-          <div className='goatImage'><img src='https://svgsilh.com/svg/1484988.svg' width='50px' alt='Goat head' /></div>
+          <div className='goatImage'><img src='./goathead.svg' width='50px' alt='Goat head' /></div>
           <div className='cliffSection current' style={{'width': currentPercent + '%'}}></div>
         </div>
       </div>
