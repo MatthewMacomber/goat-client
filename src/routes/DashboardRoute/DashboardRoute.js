@@ -70,7 +70,7 @@ const DashboardRoute = (props) => {
       {error && <p>{error}</p>}
       {completingGoal && renderCompletePopUp()}
       {!completingGoal && renderGoalsPage()}
-      {goals.goals.length !== 0 ? <Accordion goals={goals.goals}/> : null}
+      {goals.goals.length !== 0 ? <Accordion goals={goals.goals} {/* onClick={onClick} */}/> : null}
       <button onClick={() => handleClickCreate()}>Create New Goal</button>
       <button onClick={() => handleRewardList()}>View Rewards</button>
     </div>

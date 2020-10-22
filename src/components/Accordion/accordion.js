@@ -49,13 +49,13 @@ export default class Accordion extends React.Component {
           )
         }
       } else {
-      html.push(
-        <div key = {goal.id}>
-          <button onClick={() => {
-            this.setState({selectedId : goal.id})
-          }}>{goal.title}</button>
-        </div>
-      )
+        html.push(
+          <div key = {goal.id}>
+            <button onClick={() => {
+              this.setState({selectedId : goal.id})
+            }}>{goal.title}</button>
+          </div>
+        )
       }
     }
     return html;
