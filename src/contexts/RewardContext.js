@@ -39,14 +39,14 @@ export class RewardProvider extends Component {
   };
 
   addReward = (reward) => {
-    // Add new reward to context after succesful submission to server.
+    // Add new reward to context after successful submission to server.
     this.setState({rewards: this.state.rewards.concat(reward)});
   };
 
   modifyReward = (id, option) => {
-    // Modify reward, specifically for purchasing or archiving rewareds.
+    // Modify reward, specifically for purchasing or archiving rewards.
     if (option === 'purchased') {
-      // Change reward with id to purchased, server call with rewared to purchase.
+      // Change reward with id to purchased, server call with reward to purchase.
       RewardService.modifyReward({id, option})
         .then(res => {
           let modRewards = this.state.rewards;

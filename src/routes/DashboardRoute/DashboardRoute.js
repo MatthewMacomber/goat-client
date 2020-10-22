@@ -13,11 +13,10 @@ const DashboardRoute = (props) => {
   useEffect(() => {
     GoalService.getGoal()
     .then(goals => {
-      console.log(goals);
       setGoals(goals);
     })
     .catch(setError);
-  },[setGoals])
+  },[])
 
   const handleClickCreate = () => {
     const {history} = props;
@@ -35,14 +34,13 @@ const DashboardRoute = (props) => {
     .catch(res => setError(res));
   });
 
-  console.log('Dashboard goals: ', goals);
   return (
     <div>
       <h2>
         My Goals
       </h2>
       {error && <p>{error}</p>}
-      <Accordion goals={goals} onClick={onClick}/>
+      {goals.length !== 0 ? <Accordion goals={goals} onClick={onClick}/> : null}
       <button onClick={() => handleClickCreate()}>Create New Goal</button>
       <button onClick={() => handleRewardList()}>View Rewards</button>
     </div>
