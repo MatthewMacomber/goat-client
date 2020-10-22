@@ -33,6 +33,10 @@ export default class Accordion extends React.Component {
                 <p>{goal.points}</p>
                 <p>{new Date(goal.end_date).toLocaleDateString("en-US")}</p>
                 <p>{goal.complete}</p>
+              
+                <p>This goal has expired. Would you like to mark this as completed or not completed?</p>
+                <button onClick={() => this.props.onCompleteClicked(goal)}>Completed</button>
+                <button onClick={() => this.props.onIncompleteClicked(goal)}>Not Completed</button>
               </div>
             </div>
           )

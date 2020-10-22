@@ -50,11 +50,16 @@ const DashboardRoute = (props) => {
             noFunction={cancelPopUp}/>
   }
 
+  const setIncomplete = (goal) => {
+    console.log('Set Incomplete clicked');
+    goals.modifyGoal(goal.id, 'archive')
+  }
+
   const renderGoalsPage = () => {
     return (
       <div>
         {error && <p>{error}</p>}
-        {goalsLoaded ? <Accordion goals={goals.goals} onClick={setCompletingGoal}/> : null}
+        {goalsLoaded ? <Accordion goals={goals.goals} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/> : null}
         <button onClick={() => handleClickCreate()}>Create New Goal</button>
         <button onClick={() => handleRewardList()}>View Rewards</button>
       </div>
