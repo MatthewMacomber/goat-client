@@ -12,6 +12,7 @@ import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
 import GoalCreateRoute from '../../routes/GoalCreateRoute/GoalCreateRoute';
 import RewardListRoute from '../../routes/RewardListRoute/RewardListRoute';
 import RewardCreatePage from '../../routes/RewardCreatePage/RewardCreatePage';
+import ArchivedGoalsRoute from '../../routes/ArchivedGoalsRoute/ArchivedGoalsRoute';
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
             <PrivateRoute
               path={'/create-reward'}
               component={RewardCreatePage}
+            />
+            <PrivateRoute
+              path={'/archived-goals'}
+              component={ArchivedGoalsRoute}
             />
             <Route
               component={NotFoundRoute}

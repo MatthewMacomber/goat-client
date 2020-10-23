@@ -29,6 +29,11 @@ const DashboardRoute = (props) => {
     history.push(`/rewards-list`)
   };
 
+  const handleArchivedGoals = () => {
+    const {history} = props;
+    history.push(`archived-goals`)
+  };
+
   const completeGoal = (goal) => {
     goals.modifyGoal({id: goal.id, complete: true})
     .then(() => {
@@ -62,6 +67,7 @@ const DashboardRoute = (props) => {
         {goalsLoaded ? <Accordion goals={goals.goals} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/> : null}
         <button onClick={() => handleClickCreate()}>Create New Goal</button>
         <button onClick={() => handleRewardList()}>View Rewards</button>
+        <button onClick={() => handleArchivedGoals()}>View Archived Goals</button>
       </div>
     )
   }
