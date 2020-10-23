@@ -36,7 +36,7 @@ export class GoalProvider extends Component {
   loadGoals = () => {
     // Load goals into context.
     console.log('In context Load Goals');
-    GoalService.getGoal()
+    return GoalService.getGoal()
       .then(goals => {
         this.setState({goals});
       })
