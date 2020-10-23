@@ -1,9 +1,11 @@
 import React from 'react';
 import TokenService from '../services/token-service';
+import UserService from '../services/user-service';
 
 const UserContext = React.createContext({
   user: {},
   points: null,
+  point_goal: null,
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -58,25 +60,19 @@ export class UserProvider extends React.Component {
   };
 
   loadPoints = () => {
-    // Load the logged in users current points;
-    /*
     UserService.getPoints()
-      .then(points => {
-        this.setState({points});
+      .then(res => {
+        this.setState(res);
       })
       .catch(this.setError);
-      */
   };
 
-  changePoints = (value) => {
-    // Change the users points based on the input value;
-    /*
-    UserService.adjustPoints(value)
-      .then(points => {
-        this.setState({points})
+  changePoints = (points) => {
+    UserService.changePoints(points)
+      .then(res => {
+        this.setState(res)
       })
       .catch(this.setError);
-      */
   };
 
   render() {
