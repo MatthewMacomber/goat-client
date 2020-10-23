@@ -57,6 +57,7 @@ export class UserProvider extends React.Component {
   };
 
   loadPoints = () => {
+    // TODO Remove since points is now inside the user object?
     // Load the logged in users current points;
     /*
     UserService.getPoints()
