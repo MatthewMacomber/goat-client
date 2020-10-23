@@ -20,6 +20,10 @@ export class GoalProvider extends Component {
     this.state = state;
   };
 
+  componentDidMount = () => {
+    this.loadGoals();
+  }
+
   setError = (error) => {
     console.log(error);
     this.setState({error});
@@ -31,7 +35,8 @@ export class GoalProvider extends Component {
 
   loadGoals = () => {
     // Load goals into context.
-    GoalService.getGoal()
+    console.log('In context Load Goals');
+    return GoalService.getGoal()
       .then(goals => {
         this.setState({goals});
       })

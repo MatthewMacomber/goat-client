@@ -1,76 +1,78 @@
 import React from 'react';
-
+import GoalContext from '../../contexts/GoalContext';
+import './accordion.css';
 
 export default class Accordion extends React.Component {
-    state = {
-        selectedId : null
+  constructor(props) {
+    super(props);
+    console.log("Accordion -> constructor -> props", props)
+    this.state = {
+      selectedId : null,
+      goals : this.props.goals
     }
-    goals = [
-        {
-            id: 1,
-            title: 'make the bed',
-            description: 'i will make my bed every day',
-            points: 5,
-            end_date: '2020-01-01',
-            complete: false
-        },
-        {
-            id: 2,
-            title: 'take out trash',
-            description: 'i will make my bed every day',
-            points: 5,
-            end_date: '2020-01-01',
-            complete: false
-        },
-        {
-            id: 3,
-            title: 'mop the kitchen',
-            description: 'i will make my bed every day',
-            points: 5,
-            end_date: '2020-01-01',
-            complete: false
-        }
-        
-    ] 
+  }
 
-    selectedId = null;
+  selectedId = null;
 
-    populate = (goals) => {
-        let html = [];
-        for(let goal of goals){
-           if(goal.id === this.state.selectedId){
-            html.push(
-                <li key = {goal.id}>
-                    <button onClick={() => {
-                        this.setState({selectedId : goal.id})
-                        console.log(this.state)
-                    }}>{goal.title}</button>
-                    <p>{goal.description}</p>
-                    <p>{goal.points}</p>
-                    <p>{goal.end_date}</p>
-                    <p>{goal.complete}</p>
-                </li>
-            )
-           } else {
-            html.push(
-                <li key = {goal.id}>
-                    <button onClick={() => {
-                        this.setState({selectedId : goal.id})
-                        console.log(this.state)
-                    }}>{goal.title}</button>
-                </li>
-            )
-           }
-        }
-        return html;
+  populate = (goals) => {
+    let html = [];
+    if (!goals) {
+      return html;
     }
-
-    render = () => {
-        return(
-            <ul>
-                {this.populate(this.goals)}
-            </ul>
+    for(let goal of goals){
+      if(goal.id === this.state.selectedId){
+        if(new Date(goal.end_date).getTime() < new Date().getTime()){
+          html.push(
+            <div key = {goal.id} className='goalCard'>
+              <button onClick={() => {
+                this.setState({selectedId : goal.id})
+                // console.log(this.state)
+              }}>{goal.title}</button>
+              <div className='expiredGoal'>
+                <p>{goal.description}</p>
+                <p>{goal.points}</p>
+                <p>{new Date(goal.end_date).toLocaleDateString("en-US")}</p>
+                <p>{goal.complete}</p>
+              
+                <p>This goal has expired. Would you like to mark this as completed or not completed?</p>
+                <button onClick={() => this.props.onCompleteClicked(goal)}>Completed</button>
+                <button onClick={() => this.props.onIncompleteClicked(goal)}>Not Completed</button>
+              </div>
+            </div>
+          )
+        } else {
+          html.push(
+            <div key = {goal.id} className='goalCard'>
+              <button onClick={() => {
+                this.setState({selectedId : goal.id})
+                // console.log(this.state)
+              }}>{goal.title}</button>
+              <p>{goal.description}</p>
+              <p>{goal.points}</p>
+              <p>{new Date(goal.end_date).toLocaleDateString("en-US")}</p>
+              <p>{goal.complete}</p>
+            </div>
+          )
+        }
+      } else {
+        html.push(
+          <div key = {goal.id}>
+            <button onClick={() => {
+              this.setState({selectedId : goal.id})
+            }}>{goal.title}</button>
+          </div>
         )
+      }
     }
+    return html;
+  }
+
+  render = () => {
+    return(
+      <ul className='accordionList'>
+        {this.populate(this.state.goals)}
+      </ul>
+    )
+  }
 }
 
