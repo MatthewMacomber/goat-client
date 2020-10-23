@@ -78,7 +78,6 @@ export class UserProvider extends React.Component {
   render() {
     const value = {
       user: this.state.user,
-      points: this.state.points,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
