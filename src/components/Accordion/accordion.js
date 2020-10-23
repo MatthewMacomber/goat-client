@@ -51,6 +51,7 @@ export default class Accordion extends React.Component {
               <p>{goal.points}</p>
               <p>{new Date(goal.end_date).toLocaleDateString("en-US")}</p>
               <p>{goal.complete}</p>
+              <button onClick={() => this.props.onCompleteClicked(goal)}>Completed</button>
             </div>
           )
         }
