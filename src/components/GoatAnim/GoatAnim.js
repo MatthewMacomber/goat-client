@@ -33,9 +33,9 @@ export default class GoatAnim extends Component {
     this.setState({current: value});
   }
 
-  updatePoints = () => {
-    this.updateMax();
-    this.updateCurrent();
+  updatePoints = (val1, val2) => {
+    this.updateMax(val1);
+    this.updateCurrent(val2);
   }
 
   render() {
