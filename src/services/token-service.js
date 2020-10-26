@@ -19,10 +19,9 @@ const TokenService = {
   },
   parseAuthToken() {
     const authToken = TokenService.getAuthToken();
-    if(authToken) {
+    if (authToken) {
       return TokenService.parseJwt(authToken);
-    }
-    else {
+    } else {
       return undefined;
     }
   }
