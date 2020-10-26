@@ -11,7 +11,9 @@ const UserContext = React.createContext({
   clearError: () => {},
   setUser: () => {},
   processLogin: () => {},
-  processLogout: () => {}
+  processLogout: () => {},
+  loadPoints: () => {},
+  modifyPoints: () => {}
 });
 
 export default UserContext;
