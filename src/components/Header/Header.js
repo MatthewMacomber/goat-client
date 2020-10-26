@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import TokenService from '../../services/token-service'
-import UserContext from '../../contexts/UserContext'
-import './Header.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import TokenService from '../../services/token-service';
+import UserContext from '../../contexts/UserContext';
+import PointsTracker from '../PointsTracker/PointsTracker';
+import './Header.css';
 
 class Header extends Component {
-  static contextType = UserContext
+  static contextType = UserContext;
 
   handleLogoutClick = () => {
-    this.context.processLogout()
+    this.context.processLogout();
   }
 
   renderLogoutLink() {
@@ -26,6 +27,9 @@ class Header extends Component {
         </nav>
         <span className='username'>
           {this.context.user.name}
+        </span>
+        <span>
+          <PointsTracker />
         </span>
       </div>
     )
@@ -59,4 +63,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default Header;

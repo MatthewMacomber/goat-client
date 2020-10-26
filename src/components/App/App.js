@@ -1,26 +1,32 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom'
-import Header from '../Header/Header'
-import PrivateRoute from '../PrivateRoute/PrivateRoute'
-import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute'
+import { Route, Switch } from 'react-router-dom';
+import Header from '../Header/Header';
+import GoatAnim from '../GoatAnim';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import LandingPage from "../../routes/LandingPage/LandingPage";
-import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute'
-import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
+import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute';
+import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import './App.css';
-import LoginRoute from '../../routes/LoginRoute/LoginRoute'
-import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute'
+import LoginRoute from '../../routes/LoginRoute/LoginRoute';
+import DashboardRoute from '../../routes/DashboardRoute/DashboardRoute';
 import GoalCreateRoute from '../../routes/GoalCreateRoute/GoalCreateRoute';
 import RewardListRoute from '../../routes/RewardListRoute/RewardListRoute';
 import RewardCreatePage from '../../routes/RewardCreatePage/RewardCreatePage';
 import ArchivedGoalsRoute from '../../routes/ArchivedGoalsRoute/ArchivedGoalsRoute';
+import {GoalProvider} from '../../contexts/GoalContext';
+import {RewardProvider} from '../../contexts/RewardContext';
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <GoatAnim />
       <main>
+        <GoalProvider>
+          <RewardProvider>
           <Switch>
-            <Route
+            <PublicOnlyRoute
               exact path={'/'}
               component={LandingPage}
             />
@@ -56,6 +62,8 @@ function App() {
               component={NotFoundRoute}
             />
           </Switch>
+          </RewardProvider>
+        </GoalProvider>
         </main>
     </div>
   );

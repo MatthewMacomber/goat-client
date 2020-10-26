@@ -1,18 +1,11 @@
 import React from 'react';
-import GoalContext from '../../contexts/GoalContext';
 import './accordion.css';
 
 export default class Accordion extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("Accordion -> constructor -> props", props)
-    this.state = {
+    
+  state = {
       selectedId : null,
-      goals : this.props.goals
-    }
   }
-
-  selectedId = null;
 
   populate = (goals) => {
     let html = [];
@@ -21,46 +14,23 @@ export default class Accordion extends React.Component {
     }
     for(let goal of goals){
       if(goal.id === this.state.selectedId){
-        if(new Date(goal.end_date).getTime() < new Date().getTime()){
+        const expired = new Date(goal.end_date).getTime() < new Date().getTime();
           html.push(
-            <div key = {goal.id} className='goalCard'>
-              <button onClick={() => {
-                this.setState({selectedId : goal.id})
-                // console.log(this.state)
-              }}>{goal.title}</button>
-              <div className='expiredGoal'>
+            <div key = {goal.id} className={`goalCard ${expired ? 'expiredGoal' : ''}`}>
+              <button onClick={() => {this.setState({selectedId : null})}}>{goal.title}</button>
                 <p>{goal.description}</p>
                 <p>{goal.points}</p>
                 <p>{new Date(goal.end_date).toLocaleDateString("en-US")}</p>
                 <p>{goal.complete}</p>
-              
-                <p>This goal has expired. Would you like to mark this as completed or not completed?</p>
+                {expired && <p>This goal has expired. Would you like to mark this as completed or not completed?</p>}
                 <button onClick={() => this.props.onCompleteClicked(goal)}>Completed</button>
-                <button onClick={() => this.props.onIncompleteClicked(goal)}>Not Completed</button>
-              </div>
+                {expired && <button onClick={() => this.props.onIncompleteClicked(goal)}>Not Completed</button>}
             </div>
           )
-        } else {
-          html.push(
-            <div key = {goal.id} className='goalCard'>
-              <button onClick={() => {
-                this.setState({selectedId : goal.id})
-                // console.log(this.state)
-              }}>{goal.title}</button>
-              <p>{goal.description}</p>
-              <p>{goal.points}</p>
-              <p>{new Date(goal.end_date).toLocaleDateString("en-US")}</p>
-              <p>{goal.complete}</p>
-              <button onClick={() => this.props.onCompleteClicked(goal)}>Completed</button>
-            </div>
-          )
-        }
       } else {
         html.push(
           <div key = {goal.id}>
-            <button onClick={() => {
-              this.setState({selectedId : goal.id})
-            }}>{goal.title}</button>
+            <button onClick={() => {this.setState({selectedId : goal.id})}}>{goal.title}</button>
           </div>
         )
       }
@@ -71,7 +41,7 @@ export default class Accordion extends React.Component {
   render = () => {
     return(
       <ul className='accordionList'>
-        {this.populate(this.state.goals)}
+        {this.populate(this.props.goals)}
       </ul>
     )
   }

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import AuthApiService from '../../services/auth-api-service';
 import {Input, Button} from '../Utils/Utils';
-import './LoginForm.css'
+import './LoginForm.css';
 
 export default class LoginForm extends Component {
   static defaultProps = {
@@ -28,51 +28,38 @@ export default class LoginForm extends Component {
         this.context.processLogin(res.authToken);
         this.props.onLoginSuccess();
       })
-      .catch(res => {
-        this.setState({error: res});
+      .catch(error => {
+        this.setState({error: error.message});
       });
   };
 
   render() {
     const {error} = this.state;
     return (
-      <>
+      <div className='login-form-page login-flex-container'>
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-        <form className='LoginForm'
-          onSubmit={this.handleSubmitAuth}
-        >
-          <div className='user_name'>
-            <label htmlFor='LoginForm__user_name'>
-              User name:
-            </label>
-            <Input
-              name='user_name'
-              required
-              id='LoginForm__user_name'
-            />
-          </div>
-          <div className='password'>
-            <label htmlFor='LoginForm__password'>
-              Password:
-            </label>
-            <Input
-              name='password'
-              type='password'
-              required
-              id='LoginForm__password'
-            />
-          </div>
+        <form className='login-form login-flex-container' onSubmit={this.handleSubmitAuth}>
+          <label htmlFor='LoginForm__user_name'>User name:</label>
+          <Input
+            name='user_name'
+            required
+            id='LoginForm__user_name'
+          />
+          <label htmlFor='LoginForm__password'>Password:</label>
+          <Input
+            name='password'
+            type='password'
+            required
+            id='LoginForm__password'
+          />
           <footer>
-            <Button type='submit'>
-              Login
-            </Button>
-            {' '}
+            <Button type='submit'>Login</Button>
             <Link to='/register'>Need an account?</Link>
           </footer>
         </form>
-      </>
+      </div>
     );
   };
 };

@@ -1,3 +1,5 @@
+
+
 .NavBar {
   margin: 10px;
   position: fixed;
@@ -8,7 +10,10 @@
   border: 1px solid black;
   border-radius: 5px;
   padding: 2px;
-
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #333;
+  background: rgb(160, 209, 255);
 }
 
 .NavLink {
@@ -21,4 +26,9 @@
 
 .Title {
   padding-top: 6%;
+}
+
+.username {
+  display: flex;
+  justify-content: center;
 }

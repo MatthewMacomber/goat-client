@@ -11,7 +11,9 @@ const UserContext = React.createContext({
   clearError: () => {},
   setUser: () => {},
   processLogin: () => {},
-  processLogout: () => {}
+  processLogout: () => {},
+  loadPoints: () => {},
+  modifyPoints: () => {}
 });
 
 export default UserContext;
@@ -19,9 +21,12 @@ export default UserContext;
 export class UserProvider extends React.Component {
   constructor(props) {
     super(props);
-    const state = {user: {}, error: null};
+    const state = {
+      user: {},
+      error: null
+    };
     const jwtPayload = TokenService.parseAuthToken();
-    if(jwtPayload) {
+    if (jwtPayload) {
       state.user = {
         id: jwtPayload.user_id,
         name: jwtPayload.name,
@@ -32,16 +37,21 @@ export class UserProvider extends React.Component {
   };
 
   setError = (error) => {
-    console.error(error);
-    this.setState({error});
+    this.setState({
+      error: error.message
+    });
   };
 
   clearError = () => {
-    this.setState({error: null});
+    this.setState({
+      error: null
+    });
   };
 
   setUser = (user) => {
-    this.setState({user});
+    this.setState({
+      user
+    });
   };
 
   processLogin = (authToken) => {
@@ -60,15 +70,17 @@ export class UserProvider extends React.Component {
   };
 
   loadPoints = () => {
-    UserService.getPoints()
+    return UserService.getPoints()
       .then(res => {
         this.setState(res);
       })
       .catch(this.setError);
   };
 
-  changePoints = (points) => {
-    UserService.changePoints(points)
+  modifyPoints = (modify_points) => {
+    return UserService.updateUser({
+        modify_points
+      })
       .then(res => {
         this.setState(res)
       })
@@ -84,13 +96,15 @@ export class UserProvider extends React.Component {
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
+      modifyPoints: this.modifyPoints,
+      loadPoints: this.loadPoints,
       processLogin: this.processLogin,
       processLogout: this.processLogout
     };
     return (
       <UserContext.Provider value={value}>
-        {this.props.children}
+        {this.props.children} 
       </UserContext.Provider>
     )
   }
-} 
+}

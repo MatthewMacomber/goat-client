@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import UserContext from '../../contexts/UserContext';
-import GoalsApiService from '../../services/goalsAPIservice';
+import GoalContext from '../../contexts/GoalContext';
 import {Label, Input, Button} from '../Utils/Utils';
 import './GoalCreateForm.css';
 import Calendar from 'react-calendar';
@@ -12,40 +11,35 @@ export default class GoalCreateForm extends Component {
   }
 
   state = {
-    error: null,
     date: new Date(),
   };
 
-  onChange = date => this.setState({ date })
+  onChange = date => this.setState({ date });
 
-  static contextType = UserContext;
+  static contextType = GoalContext;
 
   handleSubmitGoal = ev => {
     // Submit the goal. Set up once goal api service is ready.
     ev.preventDefault();
     const {goal_title, goal_desc, goal_points} = ev.target;
-    GoalsApiService.addGoal({
+    this.context.addGoal({
       title: goal_title.value,
       description: goal_desc.value,
       points: goal_points.value,
       end_date: this.state.date,
       archive: false,
     })
-      .then(goal => {
-        goal_title.value = '';
-        goal_desc.value = '';
-        goal_points.value = '';
-        // goal_end_date.value = '';
-        this.props.onGoalCreateSuccess(goal.id); // TODO make sure this is the correct format of returned data.
+      .then(() => {
+        this.props.onGoalCreateSuccess();
       })
       .catch(res => {
-      // console.log("GoalCreateForm -> res", res)
-        this.setState({ error: res })
+        this.context.setError(res);
       })  
   }
 
   render() {
-    const {error} = this.state;
+    const {error} = this.context;
+    console.log(error);
     return (
       <>
         <div role='alert'>

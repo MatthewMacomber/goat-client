@@ -2,15 +2,79 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 5%;
 }
 
 .expiredGoal {
   border: 2px solid red;
   padding: 0;
   margin: 0;
+  background: rgb(200, 228, 255);
+}
+
+.expireMessage {
+  color: red;
+}
+
+.notExpiredGoal {
+  border: 1px solid black;
+  padding: 0;
+  margin: 0;
+  background: rgb(200, 228, 255);
 }
 
 .accordionList p {
   padding: 0;
   margin: 0;
+  
+}
+
+.AccordionFrame {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.AccordionCard {
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #333;
+  background: rgb(160, 209, 255);
+  min-width: 60%;
+  max-width: 60%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.goalCard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+  /* background: green; */
+  /* margin-top: 2%;
+  margin-bottom: 2%; */
+}
+
+.goalList {
+  align-self: center;
+  border: 1px solid black;
+  /* border-radius: 5px; */
+  box-shadow: 0 0 3px #333;
+  background: rgb(109, 184, 255);
+  min-width: 60%;
+  max-width: 60%;
+  
+}
+
+.chevDown {
+	/* font-family: "Font Awesome 5 Free"; */
+	content: '\f078';
+	/* font-weight: bold; */
+}
+
+.chevUp {
+  /* font-family: "Font Awesome 5 Free"; */
+	content: '\f077';
+	/* font-weight: bold; */
 }
