@@ -6,7 +6,7 @@ export default class PointTracker extends Component {
   static contextType = UserContext;
 
   render() {
-    const {points} = this.context.user;
+    const {points} = this.context.points;
     return (
         <p>Points: {points}</p>
     );

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import UserContext from '../../contexts/UserContext';
 import './GoatAnim.css';
 
 export default class GoatAnim extends Component {
@@ -12,8 +13,29 @@ export default class GoatAnim extends Component {
     this.setCurrent = this.setCurrent.bind(this);
   }
 
-  setCurrent(amount) {
+  static contextType = UserContext;
+
+  componentDidMount() {
+    // pulls point data from context.
+    const {points, point_goal} = this.context;
+    this.updatePoints(point_goal, points);
+  }
+
+  setCurrent = (amount) => {
     this.setState({current: amount});
+  }
+
+  updateMax = (value) => {
+    this.setState({max: value});
+  }
+
+  updateCurrent = (value) => {
+    this.setState({current: value});
+  }
+
+  updatePoints = (val1, val2) => {
+    this.updateMax(val1);
+    this.updateCurrent(val2);
   }
 
   render() {
