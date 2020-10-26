@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import GoalService from '../services/goalsAPIservice';
 
 const GoalContext = React.createContext({
@@ -16,16 +16,23 @@ export default GoalContext;
 export class GoalProvider extends Component {
   constructor(props) {
     super(props);
-    const state = {goals: [], error: null};
+    const state = {
+      goals: [],
+      error: null
+    };
     this.state = state;
   };
 
   setError = (error) => {
-    this.setState({error: error.message});
+    this.setState({
+      error: error.message
+    });
   };
 
   clearError = () => {
-    this.setState({error: null});
+    this.setState({
+      error: null
+    });
   };
 
   componentDidMount = () => {
@@ -35,25 +42,27 @@ export class GoalProvider extends Component {
   loadGoals = () => {
     return GoalService.getGoal()
       .then(goals => {
-        this.setState({goals});
+        this.setState({
+          goals
+        });
       })
       .catch(this.setError);
   };
 
   addGoal = (goal) => {
     return GoalService.addGoal(goal)
-    .then(() => {
-      this.loadGoals();
-    })
-    .catch(this.setError);
+      .then(() => {
+        this.loadGoals();
+      })
+      .catch(this.setError);
   };
 
   modifyGoal = (goal) => {
     return GoalService.modifyGoal(goal)
-    .then(() => {
-      this.loadGoals();
-    })
-    .catch(this.setError);
+      .then(() => {
+        this.loadGoals();
+      })
+      .catch(this.setError);
   };
 
   render() {
@@ -67,10 +76,13 @@ export class GoalProvider extends Component {
       modifyGoal: this.modifyGoal
     }
 
-    return (
-      <GoalContext.Provider value={value}>
-        {this.props.children}
-      </GoalContext.Provider>
+    return ( <
+      GoalContext.Provider value = {
+        value
+      } > {
+        this.props.children
+      } <
+      /GoalContext.Provider>
     )
   }
 }
