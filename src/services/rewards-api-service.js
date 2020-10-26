@@ -27,7 +27,7 @@ const RewardsApiService = {
     })
       .then(res =>
         (!res.ok)
-          ? res.json().then(e => Promise.reject(e.message))
+          ? res.json().then(e => Promise.reject(e))
           : res.json()
       );
   },
@@ -42,7 +42,7 @@ const RewardsApiService = {
     })
       .then(res =>
         (!res.ok)
-          ? res.json().then(e => Promise.reject(e.message))
+          ? res.json().then(e => Promise.reject(e))
           : res.json()
       );
   }

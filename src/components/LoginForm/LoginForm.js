@@ -36,43 +36,30 @@ export default class LoginForm extends Component {
   render() {
     const {error} = this.state;
     return (
-      <>
+      <div className='login-form-page login-flex-container'>
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-        <form className='LoginForm'
-          onSubmit={this.handleSubmitAuth}
-        >
-          <div className='user_name'>
-            <label htmlFor='LoginForm__user_name'>
-              User name:
-            </label>
-            <Input
-              name='user_name'
-              required
-              id='LoginForm__user_name'
-            />
-          </div>
-          <div className='password'>
-            <label htmlFor='LoginForm__password'>
-              Password:
-            </label>
-            <Input
-              name='password'
-              type='password'
-              required
-              id='LoginForm__password'
-            />
-          </div>
+        <form className='login-form login-flex-container' onSubmit={this.handleSubmitAuth}>
+          <label htmlFor='LoginForm__user_name'>User name:</label>
+          <Input
+            name='user_name'
+            required
+            id='LoginForm__user_name'
+          />
+          <label htmlFor='LoginForm__password'>Password:</label>
+          <Input
+            name='password'
+            type='password'
+            required
+            id='LoginForm__password'
+          />
           <footer>
-            <Button type='submit'>
-              Login
-            </Button>
-            {' '}
+            <Button type='submit'>Login</Button>
             <Link to='/register'>Need an account?</Link>
           </footer>
         </form>
-      </>
+      </div>
     );
   };
 };

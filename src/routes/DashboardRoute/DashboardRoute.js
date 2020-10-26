@@ -2,22 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import GoalContext from '../../contexts/GoalContext';
 import Accordion from '../../components/Accordion/accordion';
 import RedemptionPopUp from '../../components/RedemptionPopUp/RedemptionPopUp';
-import GoalService from '../../services/goalsAPIservice';
 
 const DashboardRoute = (props) => {
 
   const goals = useContext(GoalContext);
-  // console.log("DashboardRoute -> goals", goals.value)
-  const [error, setError] = useState(null);
-  //const [goals, setGoals] = useState([]);
   const [completingGoal, setCompletingGoal] = useState(null);
-  const [goalsLoaded, setGoalsLoaded] = useState(false);
-
-  useEffect(() => {
-    goals.loadGoals()
-    .then(() => {setGoalsLoaded(true)})
-    
-  },[])
 
   const handleClickCreate = () => {
     const {history} = props;
@@ -34,13 +23,13 @@ const DashboardRoute = (props) => {
     history.push(`archived-goals`)
   };
 
-  const completeGoal = (goal) => {
-    goals.modifyGoal({id: goal.id, complete: true})
+  const completeGoal = () => {
+    goals.modifyGoal({id: completingGoal.id, complete: true})
     .then(() => {
-      setError('');
-      cancelPopUp();
+      // goals.setError('');
+      // setCompletingGoal(null);
+      // cancelPopUp();
     })
-    .catch(res => setError(res));
   };
 
   const cancelPopUp = () => {
@@ -61,10 +50,10 @@ const DashboardRoute = (props) => {
   }
 
   const renderGoalsPage = () => {
+    console.log(goals.goals);
     return (
       <div>
-        {error && <p>{error}</p>}
-        {goalsLoaded ? <Accordion goals={goals.goals} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/> : null}
+        <Accordion goals={goals.goals} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/>
         <button onClick={() => handleClickCreate()}>Create New Goal</button>
         <button onClick={() => handleRewardList()}>View Rewards</button>
         <button onClick={() => handleArchivedGoals()}>View Archived Goals</button>
@@ -77,7 +66,7 @@ const DashboardRoute = (props) => {
       <h2>
         My Goals
       </h2>
-      {error && <p>{error}</p>}
+      {goals.error && <p>{goals.error}</p>}
       {completingGoal && renderCompletePopUp()}
       {!completingGoal && renderGoalsPage()}
     </div>

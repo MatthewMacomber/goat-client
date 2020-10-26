@@ -10,7 +10,7 @@ const AuthApiService = {
       body: JSON.stringify(user),
     })
     .then(res => {
-      return (!res.ok) ? res.json().then(e => Promise.reject(e.message)) : res.json();
+      return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json();
     });
   },
   postLogin({username, password}) {
@@ -22,7 +22,7 @@ const AuthApiService = {
       body: JSON.stringify({username, password}),
     })
     .then(res => {
-      return (!res.ok) ? res.json().then(e => Promise.reject(e.message)) : res.json();
+      return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json();
     })
   }
 }

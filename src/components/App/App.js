@@ -13,14 +13,18 @@ import GoalCreateRoute from '../../routes/GoalCreateRoute/GoalCreateRoute';
 import RewardListRoute from '../../routes/RewardListRoute/RewardListRoute';
 import RewardCreatePage from '../../routes/RewardCreatePage/RewardCreatePage';
 import ArchivedGoalsRoute from '../../routes/ArchivedGoalsRoute/ArchivedGoalsRoute';
+import {GoalProvider} from '../../contexts/GoalContext';
+import {RewardProvider} from '../../contexts/RewardContext';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <main>
+        <GoalProvider>
+          <RewardProvider>
           <Switch>
-            <Route
+            <PublicOnlyRoute
               exact path={'/'}
               component={LandingPage}
             />
@@ -56,6 +60,8 @@ function App() {
               component={NotFoundRoute}
             />
           </Switch>
+          </RewardProvider>
+        </GoalProvider>
         </main>
     </div>
   );

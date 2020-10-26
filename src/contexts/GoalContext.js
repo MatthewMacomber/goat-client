@@ -20,22 +20,19 @@ export class GoalProvider extends Component {
     this.state = state;
   };
 
-  componentDidMount = () => {
-    this.loadGoals();
-  }
-
   setError = (error) => {
-    console.log(error);
-    this.setState({error});
+    this.setState({error: error.message});
   };
 
   clearError = () => {
     this.setState({error: null});
   };
 
+  componentDidMount = () => {
+    this.loadGoals();
+  }
+
   loadGoals = () => {
-    // Load goals into context.
-    console.log('In context Load Goals');
     return GoalService.getGoal()
       .then(goals => {
         this.setState({goals});
@@ -44,33 +41,19 @@ export class GoalProvider extends Component {
   };
 
   addGoal = (goal) => {
-    // Add new goal to context after succesful submission to server.
-    this.setState({goals: this.state.goals.concat(goal)});
+    return GoalService.addGoal(goal)
+    .then(() => {
+      this.loadGoals();
+    })
+    .catch(this.setError);
   };
 
-  modifyGoal = (id, option) => {
-    // Modify goal, specifically for completeing or archiving goals.
-    if (option === 'complete') {
-      // Change goal with id to complete, server call with goal to complete.
-      GoalService.modifyGoal({id, option})
-        .then(res => {
-          let modGoals = this.state.goals;
-          modGoals[id].complete = true;
-          this.setState({goals: modGoals});
-        })
-        .catch(this.setError);
-    } else if (option === 'archive') {
-      // Change goal with id to archived, server call with goal to archive.
-      GoalService.modifyGoal({id, option})
-        .then(res => {
-          let modGoals = this.state.goals;
-          modGoals[id].archived = true;
-          this.setState({goals: modGoals})
-        })
-        .catch(this.setError);
-    } else {
-      this.setError({error: 'Incorrect option for modify goal'});
-    }
+  modifyGoal = (goal) => {
+    return GoalService.modifyGoal(goal)
+    .then(() => {
+      this.loadGoals();
+    })
+    .catch(this.setError);
   };
 
   render() {

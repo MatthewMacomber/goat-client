@@ -11,7 +11,7 @@ const UserService = {
       },
     })
     .then(res => {
-      return (!res.ok) ? res.json().then(e => Promise.reject(e.message)) : res.json();
+      return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json();
     });
   },
   updateUser(user) {
@@ -24,7 +24,7 @@ const UserService = {
       body: JSON.stringify(user),
     })
     .then(res => {
-      return (!res.ok) ? res.json().then(e => Promise.reject(e.message)) : res.json();
+      return (!res.ok) ? res.json().then(e => Promise.reject(e)) : res.json();
     });
   },
 }

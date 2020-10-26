@@ -32,8 +32,7 @@ export class UserProvider extends React.Component {
   };
 
   setError = (error) => {
-    console.error(error);
-    this.setState({error});
+    this.setState({error: error.message});
   };
 
   clearError = () => {
@@ -60,15 +59,15 @@ export class UserProvider extends React.Component {
   };
 
   loadPoints = () => {
-    UserService.getPoints()
+    return UserService.getPoints()
       .then(res => {
         this.setState(res);
       })
       .catch(this.setError);
   };
 
-  changePoints = (points) => {
-    UserService.changePoints(points)
+  modifyPoints = (modify_points) => {
+    return UserService.updateUser({modify_points})
       .then(res => {
         this.setState(res)
       })
@@ -82,6 +81,8 @@ export class UserProvider extends React.Component {
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
+      modifyPoints: this.modifyPoints,
+      loadPoints: this.loadPoints,
       processLogin: this.processLogin,
       processLogout: this.processLogout
     };
