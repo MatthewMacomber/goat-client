@@ -27,8 +27,7 @@ export default class Accordion extends React.Component {
                 {expired && <button onClick={() => this.props.onIncompleteClicked(goal)}>Not Completed</button>}
             </div>
           )
-      } 
-      else {
+      } else {
         html.push(
           <div key = {goal.id}>
             <button onClick={() => {this.setState({selectedId : goal.id})}}>{goal.title}</button>

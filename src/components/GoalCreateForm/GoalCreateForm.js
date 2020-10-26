@@ -14,7 +14,7 @@ export default class GoalCreateForm extends Component {
     date: new Date(),
   };
 
-  onChange = date => this.setState({ date })
+  onChange = date => this.setState({ date });
 
   static contextType = GoalContext;
 
@@ -30,7 +30,7 @@ export default class GoalCreateForm extends Component {
       archive: false,
     })
       .then(() => {
-        this.props.onGoalCreateSuccess(); // TODO make sure this is the correct format of returned data.
+        this.props.onGoalCreateSuccess();
       })
       .catch(res => {
         this.context.setError(res);

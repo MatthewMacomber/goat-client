@@ -1,38 +1,38 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Input, Required, Label } from '../Utils/Utils';
-import AuthApiService from '../../services/auth-api-service'
-import Button from '../Button/Button'
-import './RegistrationForm.css'
+import AuthApiService from '../../services/auth-api-service';
+import Button from '../Button/Button';
+import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => { }
   }
 
-  state = { error: null }
+  state = { error: null };
 
   handleSubmit = ev => {
-    ev.preventDefault()
-    const { name, username, password } = ev.target
+    ev.preventDefault();
+    const { name, username, password } = ev.target;
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
       password: password.value,
     })
       .then(user => {
-        name.value = ''
-        username.value = ''
-        password.value = ''
-        this.props.onRegistrationSuccess()
+        name.value = '';
+        username.value = '';
+        password.value = '';
+        this.props.onRegistrationSuccess();
       })
       .catch(res => {
-        this.setState({ error: res })
+        this.setState({ error: res });
       })
   }
 
   render() {
-    const { error } = this.state
+    const { error } = this.state;
     return (
       <form 
         className='RegistrationForm'
@@ -90,4 +90,4 @@ class RegistrationForm extends Component {
   }
 }
 
-export default RegistrationForm
+export default RegistrationForm;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import UserContext from '../../contexts/UserContext';
 import PointsTracker from '../PointsTracker/PointsTracker';
-import './Header.css'
+import './Header.css';
 
 class Header extends Component {
   static contextType = UserContext;

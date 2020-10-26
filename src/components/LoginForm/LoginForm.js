@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import AuthApiService from '../../services/auth-api-service';
 import {Input, Button} from '../Utils/Utils';
-import './LoginForm.css'
+import './LoginForm.css';
 
 export default class LoginForm extends Component {
   static defaultProps = {
