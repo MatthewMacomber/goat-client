@@ -1,12 +1,30 @@
+body {
+  padding: 40px;
+}
+
 .RegistrationForm {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  background: #fff;
+  padding: 4em 4em 2em;
+  max-width: 400px;
+  margin: 50px auto 0;
+  box-shadow: 0 0 1em #222;
+  border-radius: 2px;
 }
 
-.RegistrationForm div {
-  margin: 2px;
+
+input {
+  box-sizing: border-box;
+  outline: none;
+  margin:0;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  font-size: 1.6em;
+  padding: .8em .5em;
+  border-radius: 2px;
 }
+
 
 .Already {
   color: black;
