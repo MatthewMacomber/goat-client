@@ -24,11 +24,11 @@ const DashboardRoute = (props) => {
   };
 
   const completeGoal = () => {
-    goals.modifyGoal({id: completingGoal.id, complete: true})
+    goals.modifyGoal({id: completingGoal.id, complete: true, archive: true})
     .then(() => {
-      // goals.setError('');
-      // setCompletingGoal(null);
-      // cancelPopUp();
+      goals.setError('');
+      setCompletingGoal(null);
+      cancelPopUp();
     })
   };
 
@@ -53,7 +53,7 @@ const DashboardRoute = (props) => {
     console.log(goals.goals);
     return (
       <div>
-        <Accordion goals={goals.goals} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/>
+        <Accordion goals={goals.goals.filter(goal => !goal.complete)} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/>
         <button onClick={() => handleClickCreate()}>Create New Goal</button>
         <button onClick={() => handleRewardList()}>View Rewards</button>
         <button onClick={() => handleArchivedGoals()}>View Archived Goals</button>
