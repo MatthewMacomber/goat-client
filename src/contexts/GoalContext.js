@@ -76,13 +76,10 @@ export class GoalProvider extends Component {
       modifyGoal: this.modifyGoal
     }
 
-    return ( <
-      GoalContext.Provider value = {
-        value
-      } > {
-        this.props.children
-      } <
-      /GoalContext.Provider>
+    return (
+      <GoalContext.Provider value={value}>
+        {this.props.children}
+      </GoalContext.Provider>
     )
   }
 }

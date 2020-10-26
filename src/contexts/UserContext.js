@@ -99,13 +99,10 @@ export class UserProvider extends React.Component {
       processLogin: this.processLogin,
       processLogout: this.processLogout
     };
-    return ( <
-      UserContext.Provider value = {
-        value
-      } > {
-        this.props.children
-      } <
-      /UserContext.Provider>
+    return (
+      <UserContext.Provider value={value}>
+        {this.props.children} 
+      </UserContext.Provider>
     )
   }
 }

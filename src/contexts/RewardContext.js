@@ -100,13 +100,10 @@ export class RewardProvider extends Component {
       addReward: this.addReward,
       modifyReward: this.modifyReward
     };
-    return ( <
-      RewardContext.Provider value = {
-        value
-      } > {
-        this.props.children
-      } <
-      /RewardContext.Provider>
+    return (
+      <RewardContext.Provider value={value}>
+        {this.props.children}
+      </RewardContext.Provider>
     );
   };
 };
