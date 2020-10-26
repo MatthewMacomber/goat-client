@@ -21,7 +21,7 @@ export default class GoatAnim extends Component {
     let max = (this.state.max - this.state.current);
     let currentPercent = (this.state.current / this.state.max * 100);
     let maxPercent = (100 - currentPercent);
-
+    // TODO Needs cliff svg added as background. Needs better art in general.
     return (
       <div>
         <div className='goatAnimBar'>
