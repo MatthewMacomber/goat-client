@@ -28,8 +28,8 @@ export default class LoginForm extends Component {
         this.context.processLogin(res.authToken);
         this.props.onLoginSuccess();
       })
-      .catch(res => {
-        this.setState({error: res});
+      .catch(error => {
+        this.setState({error: error.message});
       });
   };
 
