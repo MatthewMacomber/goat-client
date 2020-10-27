@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import GoalContext from '../../contexts/GoalContext';
 import Accordion from '../../components/Accordion/accordion';
 import RedemptionPopUp from '../../components/RedemptionPopUp/RedemptionPopUp';
