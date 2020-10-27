@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
-import GoatAnim from '../GoatAnim';
+// import GoatAnim from '../GoatAnim';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import LandingPage from "../../routes/LandingPage/LandingPage";
@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <GoatAnim />
+      {/* <GoatAnim /> */}
       <main>
         <GoalProvider>
           <RewardProvider>

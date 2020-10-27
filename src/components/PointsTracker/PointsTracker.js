@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import UserContext from '../../contexts/UserContext';
-import './PointTracker.css';
+import './PointsTracker.css';
 
 export default class PointTracker extends Component {
   static contextType = UserContext;
 
   render() {
-    const {points} = this.context.points;
+    const points = this.context.points || 0;
     return (
         <p>Points: {points}</p>
     );
