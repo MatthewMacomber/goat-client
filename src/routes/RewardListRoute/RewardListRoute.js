@@ -19,9 +19,7 @@ export default class RewardListRoute extends Component {
   render() {
     return (
       <div>
-        <RewardListForm></RewardListForm>
-        <button onClick={() => this.handleClickCreate()}>Create New Reward</button>
-
+        <RewardListForm create={this.handleClickCreate}></RewardListForm>
       </div>
     )
   }
