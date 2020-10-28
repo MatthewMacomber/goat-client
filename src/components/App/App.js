@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
-// import GoatAnim from '../GoatAnim';
+import GoatAnim from '../GoatAnim/GoatAnim';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import LandingPage from "../../routes/LandingPage/LandingPage";
@@ -20,8 +20,8 @@ import {RewardProvider} from '../../contexts/RewardContext';
 function App() {
   return (
     <div className="App">
+      <GoatAnim />
       <Header />
-      {/* <GoatAnim /> */}
       <main>
         <GoalProvider>
           <RewardProvider>
@@ -64,7 +64,7 @@ function App() {
           </Switch>
           </RewardProvider>
         </GoalProvider>
-        </main>
+      </main>
     </div>
   );
 }

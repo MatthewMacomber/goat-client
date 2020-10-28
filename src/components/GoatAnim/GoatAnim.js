@@ -17,7 +17,7 @@ export default class GoatAnim extends Component {
 
   componentDidMount() {
     // pulls point data from context.
-    const {points, point_goal} = this.context;
+    const {points = 300, point_goal = 1000} = this.context;
     this.updatePoints(point_goal, points);
   }
 
@@ -45,11 +45,11 @@ export default class GoatAnim extends Component {
     let maxPercent = (100 - currentPercent);
     // TODO Needs cliff svg added as background. Needs better art in general.
     return (
-      <div>
+      <div className='sidebar'>
         <div className='goatAnimBar'>
-          <div id='left' className='cliffSection left' style={{'width': maxPercent + '%'}}><p>{max} Points left</p></div>
-          <div className='goatImage'><img src='./goathead.svg' width='50px' alt='Goat head' /></div>
-          <div className='cliffSection current' style={{'width': currentPercent + '%'}}></div>
+          <div id='left' className='cliffSection left' style={{'height': maxPercent + '%'}}><p>{max} Points left</p></div>
+          <div className='goatImage'><img src={require('./goathead.svg')} width='100px' alt='Goat head' /></div>
+          <div className='cliffSection current' style={{'height': currentPercent + '%'}}></div>
         </div>
       </div>
     )
