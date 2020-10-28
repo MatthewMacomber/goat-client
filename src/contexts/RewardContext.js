@@ -35,9 +35,13 @@ export class RewardProvider extends Component {
     });
   };
 
+  componentDidMount = () => {
+    this.loadRewards();
+  }
+
   loadRewards = () => {
     // Load rewards into context.
-    RewardService.getReward()
+    return RewardService.getReward()
       .then(rewards => {
         this.setState({
           rewards
@@ -47,47 +51,27 @@ export class RewardProvider extends Component {
   };
 
   addReward = (reward) => {
-    // Add new reward to context after successful submission to server.
-    this.setState({
-      rewards: this.state.rewards.concat(reward)
-    });
+    return RewardService.addReward(reward)
+    .then(() => {
+      this.loadRewards();
+    })
+    .catch(this.setError);
   };
 
-  modifyReward = (id, option) => {
-    // Modify reward, specifically for purchasing or archiving rewards.
-    if (option === 'purchased') {
-      // Change reward with id to purchased, server call with reward to purchase.
-      RewardService.modifyReward({
-          id,
-          option
-        })
-        .then(res => {
-          let modRewards = this.state.rewards;
-          modRewards[id].purchased = true;
-          this.setState({
-            rewards: modRewards
-          });
-        })
-        .catch(this.setError);
-    } else if (option === 'archive') {
-      // Change reward with id to archived, server call with reward to archive.
-      RewardService.modifyReward({
-          id,
-          option
-        })
-        .then(res => {
-          let modRewards = this.state.rewards;
-          modRewards[id].archived = true;
-          this.setState({
-            rewards: modRewards
-          });
-        })
-        .catch(this.setError);
-    } else {
-      this.setError({
-        error: 'Incorrect option for modify reward'
-      })
-    }
+  modifyReward = (reward) => {
+    return RewardService.modifyReward(reward)
+    .then(() => {
+      this.loadRewards();
+    })
+    .catch(this.setError);
+  };
+
+  deleteReward = (reward) => {
+    return RewardService.deleteReward(reward)
+    .then(() => {
+      this.loadRewards();
+    })
+    .catch(this.setError);
   };
 
   render() {
@@ -98,7 +82,8 @@ export class RewardProvider extends Component {
       clearError: this.clearError,
       loadRewards: this.loadRewards,
       addReward: this.addReward,
-      modifyReward: this.modifyReward
+      modifyReward: this.modifyReward,
+      deleteReward: this.deleteReward
     };
     return (
       <RewardContext.Provider value={value}>

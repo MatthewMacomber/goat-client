@@ -5,7 +5,7 @@ const RewardsApiService = {
   getReward() {
     return fetch(`${config.API_ENDPOINT}/rewards`, {
         method: 'GET',
-        header: {
+        headers: {
           'content-type': 'application/json',
           'authorization': `Bearer ${TokenService.getAuthToken()}`
         }
@@ -43,7 +43,22 @@ const RewardsApiService = {
       .then(res =>
         (!res.ok) ?
         res.json().then(e => Promise.reject(e)) :
-        res.json()
+        null
+      );
+  },
+  deleteReward(reward) {
+    return fetch(`${config.API_ENDPOINT}/rewards`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json',
+          'authorization': `Bearer ${TokenService.getAuthToken()}`
+        },
+        body: JSON.stringify(reward)
+      })
+      .then(res =>
+        (!res.ok) ?
+        res.json().then(e => Promise.reject(e)) :
+        null
       );
   }
 };

@@ -11,11 +11,9 @@ export default class RewardCreatePage extends Component {
   };
   
 
-  handleRewardCreateSuccess = (id) => {
+  handleRewardCreateSuccess = () => {
     const {history} = this.props;
-    // history.push(`/goal/${id}`)
-    // Change this later
-    history.push(`/dashboard`)
+    history.push(`/rewards-list`)
   }
 
 
