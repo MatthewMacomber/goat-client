@@ -45,12 +45,10 @@ const DashboardRoute = (props) => {
   }
 
   const setIncomplete = (goal) => {
-    console.log('Set Incomplete clicked');
-    goals.modifyGoal(goal.id, 'archive')
+    goals.modifyGoal(goal.id, 'archive');
   }
 
   const renderGoalsPage = () => {
-    console.log(goals.goals);
     return (
       <div>
         <Accordion goals={goals.goals.filter(goal => !goal.complete)} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/>
