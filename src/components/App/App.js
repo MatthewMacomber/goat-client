@@ -19,8 +19,9 @@ import {RewardProvider} from '../../contexts/RewardContext';
 
 function App() {
   return (
+    <>
+    <GoatAnim />
     <div className="App">
-      <GoatAnim />
       <Header />
       <main className="AppCard">
         <GoalProvider>
@@ -66,6 +67,7 @@ function App() {
         </GoalProvider>
       </main>
     </div>
+    </>
   );
 }
 
