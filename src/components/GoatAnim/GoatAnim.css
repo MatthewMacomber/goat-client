@@ -25,12 +25,12 @@
 }
 
 .current {
-  background-color: green;
+  background-color: rgba(0, 128, 0, 0.5);
   transition: height is ease-in-out;
 }
 
 .left {
-  background-color: #ccc;
+  background-color: rgba(204, 204, 204, 0.5);
   transition: height is ease-in-out;
 }
 
