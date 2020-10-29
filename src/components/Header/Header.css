@@ -38,7 +38,13 @@
   padding: 0;
   margin: 1%;
   font-weight: 700;
-  font-size: 250%;
+  font-size: 275%;
+  text-align: center;
+}
+
+.TitleLink {
+  color: brown;
+  text-decoration:none; 
 }
 
 .username {
