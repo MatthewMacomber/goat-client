@@ -22,8 +22,9 @@ function App() {
 
   const user = useContext(UserContext);
   return (
+    <>
+    <GoatAnim />
     <div className="App">
-      <GoatAnim />
       <Header />
       <main className="AppCard">
         <GoalProvider userContext={user}>
@@ -69,6 +70,7 @@ function App() {
         </GoalProvider>
       </main>
     </div>
+    </>
   );
 }
 
