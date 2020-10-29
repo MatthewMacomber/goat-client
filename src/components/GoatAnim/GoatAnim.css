@@ -1,12 +1,13 @@
 .sidebar {
-  height: 90vh;
-  position: absolute;
+  height: 80vh;
+  position: fixed;
   transition: all 0.25s ease;
+  margin-top: 25%;
 }
 
 .goatAnimBar {
   width: 100px;
-  height: 90vh;
+  height: 80vh;
   position: relative;
 }
 

@@ -1,0 +1,16 @@
+.goalControl {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  background-color: rgb(184, 182, 182);
+  border-radius: 15px;
+}

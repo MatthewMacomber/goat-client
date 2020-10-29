@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import GoalContext from '../../contexts/GoalContext';
 import Accordion from '../../components/Accordion/accordion';
 import RedemptionPopUp from '../../components/RedemptionPopUp/RedemptionPopUp';
+import './DashboardRoute.css'
 
 const DashboardRoute = (props) => {
 
@@ -50,11 +51,13 @@ const DashboardRoute = (props) => {
 
   const renderGoalsPage = () => {
     return (
-      <div>
+      <div className='goalControl'>
         <Accordion goals={goals.goals.filter(goal => !goal.complete)} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/>
-        <button onClick={() => handleClickCreate()}>Create New Goal</button>
-        <button onClick={() => handleRewardList()}>View Rewards</button>
-        <button onClick={() => handleArchivedGoals()}>View Archived Goals</button>
+        <div className='dashButtons'>
+          <button onClick={() => handleClickCreate()}>Create New Goal</button>
+          <button onClick={() => handleRewardList()}>View Rewards</button>
+          <button onClick={() => handleArchivedGoals()}>View Archived Goals</button>
+        </div>
       </div>
     )
   }

@@ -1,0 +1,9 @@
+.demo-info {
+    font-weight: bold;
+    margin: 10px;
+}
+
+.demo-info p {
+    margin: 0;
+    padding: 0;
+}

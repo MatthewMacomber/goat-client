@@ -1,19 +1,27 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .NavBar {
-  margin: 10px;
+  overflow: hidden;
+  /* background-color: #666666; */
   position: fixed;
   top: 0;
   right: 0;
+  width: 100%;
   text-align: right;
   font-weight: bold;
-  border: 1px solid black;
-  border-radius: 5px;
+  /* border: 1px solid black; */
+  /* border-radius: 5px; */
   padding: 2px;
-  border: 1px solid black;
-  border-radius: 5px;
   box-shadow: 0 0 3px #333;
-  background: rgb(160, 209, 255);
+  background: rgba(177, 176, 143, 0.863);
+}
+
+.pointsTracker {
+  overflow: hidden;
+  /* background-color: #666666; */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .NavLink {
@@ -25,10 +33,27 @@
 }
 
 .Title {
-  padding-top: 6%;
+  font-family: 'Bebas Neue';
+  float: center;
+  position: relative;
+  top: 0;
+  padding: 0;
+  margin:10% 0 4% 0;
+  font-weight: 700;
+  font-size: 350%;
+  text-align: center;
+  text-shadow: 2px 2px 5px black;
+}
+
+.TitleLink {
+  color: brown;
+  text-decoration:none; 
 }
 
 .username {
-  display: flex;
-  justify-content: center;
+  overflow: hidden;
+  /* position: fixed; */
+  top: 0;
+  right: 0;
+  padding-right: 2%;
 }

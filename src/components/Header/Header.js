@@ -28,7 +28,7 @@ class Header extends Component {
         <span className='username'>
           {this.context.user.name}
         </span>
-        <span>
+        <span className='pointsTracker'>
           <PointsTracker />
         </span>
       </div>
