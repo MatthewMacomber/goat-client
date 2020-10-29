@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .NavBar {
   overflow: hidden;
@@ -32,6 +33,7 @@
 }
 
 .Title {
+  font-family: 'Bebas Neue';
   float: center;
   position: relative;
   top: 0;
