@@ -76,9 +76,17 @@
   /* border-radius: 5px; */
   box-shadow: 0 0 3px #333;
   
-  background: rgb(109, 184, 255);
+  background: rgb(190, 190, 187);
   min-width: 60%;
   max-width: 60%;
   
 }
 
+button.AccordionCard {
+  background-color: rgb(184, 182, 182);
+  border-radius: 15px;
+}
+
+.notExpiredGoal{
+  background-color: rgb(255, 255, 250);
+}
