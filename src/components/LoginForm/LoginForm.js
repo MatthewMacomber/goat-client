@@ -41,13 +41,13 @@ export default class LoginForm extends Component {
           {error && <p className='red'>{error}</p>}
         </div>
         <form className='login-form login-flex-container' onSubmit={this.handleSubmitAuth}>
-          <label htmlFor='LoginForm__user_name'>User name:</label>
+          <label htmlFor='LoginForm__user_name'>Username*</label>
           <Input
             name='user_name'
             required
             id='LoginForm__user_name'
           />
-          <label htmlFor='LoginForm__password'>Password:</label>
+          <label htmlFor='LoginForm__password'>Password*</label>
           <Input
             name='password'
             type='password'
@@ -56,7 +56,7 @@ export default class LoginForm extends Component {
           />
           <footer>
             <Button type='submit'>Login</Button>
-            <Link to='/register' id='need-account-link'>Need an account?</Link>
+            <Link to='/register' id='need-account-link' className='NeedLink'>Need an account?</Link>
           </footer>
         </form>
       </div>
