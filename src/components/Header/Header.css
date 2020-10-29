@@ -1,19 +1,26 @@
 
-
 .NavBar {
-  margin: 10px;
+  overflow: hidden;
+  /* background-color: #666666; */
   position: fixed;
   top: 0;
   right: 0;
+  width: 100%;
   text-align: right;
   font-weight: bold;
-  border: 1px solid black;
-  border-radius: 5px;
+  /* border: 1px solid black; */
+  /* border-radius: 5px; */
   padding: 2px;
-  border: 1px solid black;
-  border-radius: 5px;
   box-shadow: 0 0 3px #333;
   background: rgb(160, 209, 255);
+}
+
+.pointsTracker {
+  overflow: hidden;
+  /* background-color: #666666; */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .NavLink {
@@ -25,10 +32,21 @@
 }
 
 .Title {
-  padding-top: 6%;
+  float: center;
+  position: relative;
+  top: 0;
+  /* left: 50%; */
+  /* right: 50%; */
+  /* transform: translate(-50%, -50%); */
+  padding: 0;
+  margin: 0;
+  /* text-align: center; */
 }
 
 .username {
-  display: flex;
-  justify-content: center;
+  overflow: hidden;
+  /* position: fixed; */
+  top: 0;
+  right: 0;
+  padding-right: 2%;
 }
