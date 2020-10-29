@@ -36,7 +36,9 @@ export class GoalProvider extends Component {
   };
 
   componentDidMount = () => {
-    this.loadGoals();
+    if(this.props.userContext.user.id) {
+      this.loadGoals();
+    }
   }
 
   loadGoals = () => {
