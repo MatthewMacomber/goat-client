@@ -6,8 +6,11 @@ body {
 
 
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  height: 100vh;
+  height: 100%;
   padding: 0;
   margin: 0;
 }
@@ -15,6 +18,13 @@ body {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.AppCard {
+
+  align-self: center;
+  border: 2px solid black;
+  width: 50%;
 }
 
 @media (prefers-reduced-motion: no-preference) {

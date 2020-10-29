@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <GoatAnim />
       <Header />
-      <main>
+      <main className="AppCard">
         <GoalProvider>
           <RewardProvider>
           <Switch>
