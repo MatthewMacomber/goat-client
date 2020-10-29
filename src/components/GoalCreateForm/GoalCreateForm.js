@@ -87,7 +87,7 @@ export default class GoalCreateForm extends Component {
             <div className='endDateCalendar'>
               <Calendar
                 onChange={this.onChange}
-                value={this.state.date}
+                value={tomorrow}
                 minDate={tomorrow}
                 required
               />
