@@ -56,7 +56,7 @@ export default class LoginForm extends Component {
           />
           <footer>
             <Button type='submit'>Login</Button>
-            <Link to='/register'>Need an account?</Link>
+            <Link to='/register' id='need-account-link'>Need an account?</Link>
           </footer>
         </form>
       </div>

@@ -26,3 +26,7 @@
 .login-form footer button {
   margin-right: 10px;
 }
+
+Input {
+  height: 5px;
+}
