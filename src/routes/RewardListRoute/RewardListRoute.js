@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import RewardListForm from '../../components/RewardListForm/RewardListForm';
 import './RewardListRoute.css';
-
+import UserContext from '../../contexts/UserContext';
 
 
 export default class RewardListRoute extends Component {
@@ -10,6 +10,8 @@ export default class RewardListRoute extends Component {
       push: () => {}
     }
   };
+
+  static contextType = UserContext;
   
   handleClickCreate = () => {
     const {history} = this.props;
@@ -19,7 +21,7 @@ export default class RewardListRoute extends Component {
   render() {
     return (
       <div>
-        <RewardListForm create={this.handleClickCreate}></RewardListForm>
+        <RewardListForm userContext={this.context} create={this.handleClickCreate}></RewardListForm>
       </div>
     )
   }

@@ -1,38 +1,13 @@
 import React from 'react';
 import './ArchivedGoalsRoute.css';
+import GoalContext from '../../contexts/GoalContext';
 
 export default class ArchivedGoals extends React.Component {
-  goals = [
-    {
-        id: 1,
-        title: 'make the bed',
-        description: 'i will make my bed every day',
-        points: 5,
-        end_date: '2020-01-01',
-        archive: true
-    },
-    {
-        id: 2,
-        title: 'take out trash',
-        description: 'i will make my bed every day',
-        points: 10,
-        end_date: '2020-01-01',
-        archive: false
-    },
-    {
-        id: 3,
-        title: 'mop the kitchen',
-        description: 'i will make my bed every day',
-        points: 8,
-        end_date: '2020-01-01',
-        archive: true
-    }
-  ]
-  
 
+  static contextType = GoalContext;
 
   render(){
-    const archivedGoals = this.goals.filter(goal => goal.archive)
+    const archivedGoals = this.context.goals.filter(goal => goal.archive)
     return(
       <div>
         <section className="goals-list-section">

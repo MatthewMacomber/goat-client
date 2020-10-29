@@ -7,7 +7,10 @@ export default class RewardListForm extends Component{
   
   static contextType = RewardContext;
 
-  state = {completingReward: null};
+  state = {
+    completingReward: null,
+    userContext: {}
+  };
 
   completeReward = () => {
     const {completingReward} = this.state;
@@ -45,8 +48,7 @@ export default class RewardListForm extends Component{
           <div>Reward: {reward.title}</div>
           <div>{reward.description}</div>
           <div>Points needed to redeem: {reward.points}</div>
-          <div>{reward.redeemed}</div>
-          <button onClick={() => this.setCompletingReward(reward)}>Redeem Reward</button>
+          {this.props.userContext.points >= reward.points && <button onClick={() => this.setCompletingReward(reward)}>Redeem Reward</button>}
         </li>
       ))}
       </ul> 
