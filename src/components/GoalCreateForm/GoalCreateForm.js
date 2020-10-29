@@ -39,7 +39,8 @@ export default class GoalCreateForm extends Component {
 
   render() {
     const {error} = this.context;
-    console.log(error);
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
     return (
       <>
         <div role='alert'>
@@ -87,6 +88,7 @@ export default class GoalCreateForm extends Component {
               <Calendar
                 onChange={this.onChange}
                 value={this.state.date}
+                minDate={tomorrow}
                 required
               />
             </div>
