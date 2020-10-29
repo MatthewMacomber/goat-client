@@ -46,13 +46,13 @@ const DashboardRoute = (props) => {
   }
 
   const setIncomplete = (goal) => {
-    goals.modifyGoal(goal.id, 'archive');
+    goals.modifyGoal({id: goal.id, archive: true});
   }
 
   const renderGoalsPage = () => {
     return (
       <div className='goalControl'>
-        <Accordion goals={goals.goals.filter(goal => !goal.complete)} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/>
+        <Accordion goals={goals.goals.filter(goal => !goal.complete && !goal.archive)} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/>
         <div className='dashButtons'>
           <button onClick={() => handleClickCreate()}>Create New Goal</button>
           <button onClick={() => handleRewardList()}>View Rewards</button>

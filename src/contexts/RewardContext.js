@@ -36,7 +36,9 @@ export class RewardProvider extends Component {
   };
 
   componentDidMount = () => {
-    this.loadRewards();
+    if(this.props.userContext.user.id) {
+      this.loadRewards();
+    }
   }
 
   loadRewards = () => {
