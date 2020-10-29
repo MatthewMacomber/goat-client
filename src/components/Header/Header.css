@@ -38,10 +38,11 @@
   position: relative;
   top: 0;
   padding: 0;
-  margin: 1%;
+  margin: 2%;
   font-weight: 700;
-  font-size: 275%;
+  font-size: 350%;
   text-align: center;
+  text-shadow: 2px 2px 5px black;
 }
 
 .TitleLink {
