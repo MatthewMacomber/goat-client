@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
-import GoatAnim from '../GoatAnim/GoatAnim';
+//import GoatAnim from '../GoatAnim/GoatAnim';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import LandingPage from "../../routes/LandingPage/LandingPage";
@@ -23,7 +23,7 @@ function App() {
   const user = useContext(UserContext);
   return (
     <>
-    <GoatAnim />
+    {/*<GoatAnim />*/}
     <div className="App">
       <Header />
       <main className="AppCard">
