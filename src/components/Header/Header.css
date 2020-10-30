@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bebas+Neue&display=swap');
 
 .NavBar {
   overflow: hidden;
@@ -26,6 +26,8 @@
 
 .NavLink {
   z-index: -1;
+  font-family: 'Barlow Condensed';
+  font-size: 18px;
 }
 
 .NavLink:hover {
@@ -57,9 +59,13 @@
 }
 
 .username {
+  font-family: 'Barlow Condensed';
+  font-size: 16px;
   overflow: hidden;
   /* position: fixed; */
   top: 0;
   right: 0;
   padding-right: 2%;
+  font-family: 'Barlow Condensed';
+  font-size: 18px;
 }
