@@ -39,7 +39,7 @@ export default class GoatAnim extends Component {
   }
 
   renderSideBar = (max, currentPercent, maxPercent) => {
-    if (this.context.user) {
+    if (this.context.user.id) {
       return (
         <div className='goatAnimBar'>
           <div id='cliff' className='cliff'><img src={require('./cliff.svg')} alt='Cliffside' /></div>
@@ -57,7 +57,6 @@ export default class GoatAnim extends Component {
   }
 
   render() {
-
     let max = (this.state.max - this.state.current);
     let currentPercent = (this.state.current / this.state.max * 100);
     let maxPercent = (100 - currentPercent);
