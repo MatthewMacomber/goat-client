@@ -19,7 +19,12 @@ export default class RewardCreateForm extends Component {
     })
     .then(() => {
       this.props.onRewardCreateSuccess();
-    });
+    })
+    .catch(this.context.setError);
+  }
+
+  componentWillUnmount() {
+    this.context.clearError();
   }
 
   render() {

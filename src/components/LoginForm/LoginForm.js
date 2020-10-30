@@ -29,7 +29,7 @@ export default class LoginForm extends Component {
         this.props.onLoginSuccess();
       })
       .catch(error => {
-        this.setState({error: error.error.message});
+        this.setState({error: error.message});
       });
   };
 

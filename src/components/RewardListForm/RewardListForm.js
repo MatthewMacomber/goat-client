@@ -12,11 +12,14 @@ export default class RewardListForm extends Component{
     userContext: {}
   };
 
+  componentWillUnmount() {
+    this.context.clearError();
+  }
+  
   completeReward = () => {
     const {completingReward} = this.state;
     this.context.deleteReward(completingReward)
     .then(() => {
-      this.context.setError('');
       this.cancelPopUp();
     })
   };

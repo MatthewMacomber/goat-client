@@ -47,7 +47,8 @@ export class RewardProvider extends Component {
       .then(rewards => {
         this.setState({
           rewards
-        });
+        })
+        this.clearError();
       })
       .catch(this.setError);
   };
@@ -57,7 +58,10 @@ export class RewardProvider extends Component {
     .then(() => {
       this.loadRewards();
     })
-    .catch(this.setError);
+    .catch(e => {
+      this.setError(e);
+      return Promise.reject(e);
+    });
   };
 
   modifyReward = (reward) => {

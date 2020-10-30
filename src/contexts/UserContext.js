@@ -75,6 +75,7 @@ export class UserProvider extends React.Component {
     return UserService.getPoints()
       .then(res => {
         this.setState(res);
+        this.clearError();
       })
       .catch(this.setError);
   };
@@ -85,6 +86,7 @@ export class UserProvider extends React.Component {
       })
       .then(res => {
         this.setState(res)
+        this.clearError();
       })
       .catch(this.setError);
   };

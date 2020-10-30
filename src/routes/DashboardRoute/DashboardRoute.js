@@ -1,78 +1,91 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import GoalContext from '../../contexts/GoalContext';
 import Accordion from '../../components/Accordion/accordion';
 import RedemptionPopUp from '../../components/RedemptionPopUp/RedemptionPopUp';
 import './DashboardRoute.css'
 
-const DashboardRoute = (props) => {
+class DashboardRoute extends React.Component {
 
-  const goals = useContext(GoalContext);
-  const [completingGoal, setCompletingGoal] = useState(null);
+  static contextType = GoalContext;
+  state = {
+    completingGoal: null,
+  }
 
-  const handleClickCreate = () => {
-    const {history} = props;
+  componentWillUnmount() {
+    this.context.clearError();
+  }
+
+  setCompletingGoal = (completingGoal) => {
+    this.setState({completingGoal});
+  }
+
+  handleClickCreate = () => {
+    const {history} = this.props;
     history.push(`/create-goal`)
   };
 
-  const handleRewardList = () => {
-    const {history} = props;
+  handleRewardList = () => {
+    const {history} = this.props;
     history.push(`/rewards-list`)
   };
 
-  const handleArchivedGoals = () => {
-    const {history} = props;
+  handleArchivedGoals = () => {
+    const {history} = this.props;
     history.push(`archived-goals`)
   };
 
-  const completeGoal = () => {
-    goals.modifyGoal({id: completingGoal.id, complete: true, archive: true})
+  completeGoal = () => {
+    const {completingGoal} = this.state;
+    this.context.modifyGoal({id: completingGoal.id, complete: true, archive: true})
     .then(() => {
-      goals.setError('');
-      setCompletingGoal(null);
-      cancelPopUp();
+      this.setCompletingGoal(null);
+      this.cancelPopUp();
     })
   };
 
-  const cancelPopUp = () => {
-    setCompletingGoal(null);
+  cancelPopUp = () => {
+    this.setCompletingGoal(null);
   }
 
-  const renderCompletePopUp = () => {
+  renderCompletePopUp = () => {
+    const {completingGoal} = this.state;
     return <RedemptionPopUp 
             question={`Complete ${completingGoal.title}?`}
             points={completingGoal.points}
-            yesFunction={completeGoal}
-            noFunction={cancelPopUp}/>
+            yesFunction={this.completeGoal}
+            noFunction={this.cancelPopUp}/>
   }
 
-  const setIncomplete = (goal) => {
-    goals.modifyGoal({id: goal.id, archive: true});
+  setIncomplete = (goal) => {
+    this.context.modifyGoal({id: goal.id, archive: true});
   }
 
-  const renderGoalsPage = () => {
+  renderGoalsPage = () => {
     return (
       <div className='goalControl'>
-        <Accordion goals={goals.goals.filter(goal => !goal.complete && !goal.archive)} onCompleteClicked={setCompletingGoal} onIncompleteClicked={setIncomplete}/>
+        <Accordion goals={this.context.goals.filter(goal => !goal.complete && !goal.archive)} onCompleteClicked={this.setCompletingGoal} onIncompleteClicked={this.setIncomplete}/>
         <div className='dashButtons'>
-          <button onClick={() => handleClickCreate()}>Create New Goal</button>
-          <button onClick={() => handleRewardList()}>View Rewards</button>
-          <button onClick={() => handleArchivedGoals()}>View Archived Goals</button>
+          <button onClick={() => this.handleClickCreate()}>Create New Goal</button>
+          <button onClick={() => this.handleRewardList()}>View Rewards</button>
+          <button onClick={() => this.handleArchivedGoals()}>View Archived Goals</button>
         </div>
       </div>
     )
   }
 
-  return (
-    <div>
-      <h2>
-        My Goals
-      </h2>
-      {goals.error && <p>{goals.error}</p>}
-      {completingGoal && renderCompletePopUp()}
-      {!completingGoal && renderGoalsPage()}
-    </div>
-  );
-  
+  render() {
+    const {completingGoal} = this.state;
+    return (
+      <div>
+        <h2>
+          My Goals
+        </h2>
+        {this.context.error && <p>{this.context.error}</p>}
+        {completingGoal && this.renderCompletePopUp()}
+        {!completingGoal && this.renderGoalsPage()}
+      </div>
+    );
+  }
 }
 
 export default DashboardRoute;
