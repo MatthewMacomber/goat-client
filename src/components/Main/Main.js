@@ -24,7 +24,7 @@ const LandingPage = (props) => {
              </section> 
              <br/>
              <section className="login">
-                 <Link to="/login">Already have an account?
+                 <Link to="/login" className='Already'>Already have an account?
                  </Link>
              </section>
         </div>
