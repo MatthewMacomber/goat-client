@@ -57,30 +57,30 @@ export default class GoalCreateForm extends Component {
           className='GoalCreateForm'
           onSubmit={this.handleSubmitGoal}
         >
-          <div>
+          <div className='form-row'>
             <Label htmlFor='goal-title-input'>
               Goal:
-            </Label>
+            </Label><br/>
             <Input
               id='goal-title-input'
               name='goal_title'
               required
             />
           </div>
-          <div>
+          <div className='form-row'>
             <Label htmlFor='goal-desc-input'>
               Description:
-            </Label>
+            </Label><br/>
             <Input
               id='goal-desc-input'
               name='goal_desc'
               required
             />
           </div>
-          <div>
+          <div className='form-row'>
             <Label htmlFor='goal-points-input'>
               Points:
-            </Label>
+            </Label><br/>
             <Input
               id='goal-points-input'
               name='goal_points'
