@@ -37,29 +37,29 @@ export default class RewardCreateForm extends Component {
           className='rewardCreateForm'
           onSubmit={this.handleSubmitReward}
         >
-          <div>
+          <div className='form-row'>
             <Label htmlFor='reward-title-input'>
               Reward:
-            </Label>
+            </Label><br/>
             <Input
               id='reward-title-input'
               name='reward_title'
               required
             />
           </div>
-          <div>
+          <div className='form-row'>
             <Label htmlFor='reward-title-description'>
               Description:
-            </Label>
+            </Label><br/>
             <Input
               id='reward-title-description'
               name='reward_description'
             />
           </div>
-          <div>
+          <div className='form-row'>
             <Label htmlFor='reward-points-input'>
               Points to redeem:
-            </Label>
+            </Label><br/>
             <Input
               id='reward-points-input'
               name='reward_points'
