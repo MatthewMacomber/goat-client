@@ -26,7 +26,6 @@
 }
 
 .current {
-  background-color: rgba(0, 128, 0);
   transition: height is ease-in-out;
 }
 

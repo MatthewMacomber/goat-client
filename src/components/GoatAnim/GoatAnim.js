@@ -39,7 +39,7 @@ export default class GoatAnim extends Component {
   }
 
   renderSideBar = (max, currentPercent, maxPercent) => {
-    if (this.context.user.id) {
+    if (true) {
       return (
         <div className='goatAnimBar'>
           <div id='cliff' className='cliff'><img src={require('./cliff.svg')} alt='Cliffside' /></div>
