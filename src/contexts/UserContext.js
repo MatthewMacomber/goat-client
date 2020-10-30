@@ -32,6 +32,7 @@ export class UserProvider extends React.Component {
         name: jwtPayload.name,
         username: jwtPayload.sub
       }
+      this.loadPoints();
     }
     this.state = state;
   };
@@ -62,6 +63,7 @@ export class UserProvider extends React.Component {
       name: jwtPayload.name,
       username: jwtPayload.sub
     });
+    this.loadPoints();
   };
 
   processLogout = () => {
@@ -73,6 +75,7 @@ export class UserProvider extends React.Component {
     return UserService.getPoints()
       .then(res => {
         this.setState(res);
+        this.clearError();
       })
       .catch(this.setError);
   };
@@ -83,6 +86,7 @@ export class UserProvider extends React.Component {
       })
       .then(res => {
         this.setState(res)
+        this.clearError();
       })
       .catch(this.setError);
   };

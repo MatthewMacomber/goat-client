@@ -1,5 +1,9 @@
 .demo-info {
-    color: white;
-    text-shadow: 2px 2px 2px black;
     font-weight: bold;
+    margin: 10px;
+}
+
+.demo-info p {
+    margin: 0;
+    padding: 0;
 }

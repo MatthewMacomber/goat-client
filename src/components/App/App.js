@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import GoatAnim from '../GoatAnim/GoatAnim';
@@ -16,15 +16,19 @@ import RewardCreatePage from '../../routes/RewardCreatePage/RewardCreatePage';
 import ArchivedGoalsRoute from '../../routes/ArchivedGoalsRoute/ArchivedGoalsRoute';
 import {GoalProvider} from '../../contexts/GoalContext';
 import {RewardProvider} from '../../contexts/RewardContext';
+import UserContext from '../../contexts/UserContext';
 
 function App() {
+
+  const user = useContext(UserContext);
   return (
+    <>
+    <GoatAnim />
     <div className="App">
-      <GoatAnim />
       <Header />
       <main className="AppCard">
-        <GoalProvider>
-          <RewardProvider>
+        <GoalProvider userContext={user}>
+          <RewardProvider userContext={user}>
           <Switch>
             <PublicOnlyRoute
               exact path={'/'}
@@ -66,6 +70,7 @@ function App() {
         </GoalProvider>
       </main>
     </div>
+    </>
   );
 }
 

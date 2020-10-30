@@ -10,9 +10,18 @@ export default class GoalCreateForm extends Component {
     onGoalCreateSuccess: () => {}
   }
 
-  state = {
-    date: new Date(),
-  };
+  constructor(props) {
+    super(props);
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    this.state = {
+      date: tomorrow,
+    }
+  }
+
+  componentWillUnmount() {
+    this.context.clearError();
+  }
 
   onChange = date => this.setState({ date });
 
@@ -32,14 +41,13 @@ export default class GoalCreateForm extends Component {
       .then(() => {
         this.props.onGoalCreateSuccess();
       })
-      .catch(res => {
-        this.context.setError(res);
-      })  
+      .catch(this.context.setError);
   }
 
   render() {
     const {error} = this.context;
-    console.log(error);
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
     return (
       <>
         <div role='alert'>
@@ -87,6 +95,7 @@ export default class GoalCreateForm extends Component {
               <Calendar
                 onChange={this.onChange}
                 value={this.state.date}
+                minDate={tomorrow}
                 required
               />
             </div>
