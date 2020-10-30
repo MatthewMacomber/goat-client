@@ -47,6 +47,7 @@ export class GoalProvider extends Component {
         this.setState({
           goals
         });
+        this.clearError();
       })
       .catch(this.setError);
   };
@@ -56,7 +57,10 @@ export class GoalProvider extends Component {
       .then(() => {
         this.loadGoals();
       })
-      .catch(this.setError);
+      .catch((e) => {
+        this.setError(e);
+        return Promise.reject(e);
+      });
   };
 
   modifyGoal = (goal) => {
