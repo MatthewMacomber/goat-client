@@ -53,6 +53,8 @@
 }
 
 .username {
+  font-family: 'Barlow Condensed';
+  font-size: 16px;
   overflow: hidden;
   /* position: fixed; */
   top: 0;
