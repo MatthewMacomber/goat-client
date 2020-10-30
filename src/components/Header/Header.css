@@ -27,7 +27,7 @@
 .NavLink {
   z-index: -1;
   font-family: 'Barlow Condensed';
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .NavLink:hover {
@@ -60,4 +60,6 @@
   top: 0;
   right: 0;
   padding-right: 2%;
+  font-family: 'Barlow Condensed';
+  font-size: 18px;
 }

@@ -13,14 +13,14 @@
   border: 2px solid red;
   padding: 0;
   margin: 0;
-  background: rgb(200, 228, 255);
+  background: rgb(222, 225, 228);
 }
 
 .notExpiredGoal {
   border: 2px solid black;
   padding: 0;
   margin: 0;
-  background: rgb(200, 228, 255);
+  background: rgb(222, 227, 231);
 }
 
 .expireMessage {
@@ -31,7 +31,7 @@
   border: 1px solid black;
   padding: 0;
   margin: 0;
-  background: rgb(200, 228, 255);
+  background: rgb(222, 230, 236);
 }
 
 .accordionList p {
@@ -51,7 +51,7 @@
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0 0 3px #333;
-  background: rgb(160, 209, 255);
+  background: rgb(222, 232, 241);
   transition: all 0.3s ease;
 }
 

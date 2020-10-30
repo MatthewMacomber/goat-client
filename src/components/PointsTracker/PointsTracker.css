@@ -1,4 +1,7 @@
-.point-tracker{
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bebas+Neue&display=swap');
+
+.points-tracker {
     font-family: 'Barlow Condensed';
-    font-size: 16px;
+    font-size: 18px;
+
 }
