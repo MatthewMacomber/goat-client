@@ -8,7 +8,7 @@ export default class PointTracker extends Component {
   render() {
     const points = this.context.points || 0;
     return (
-        <p>Points: {points}</p>
+        <p className='points-tracker'>Points: {points}</p>
     );
   };
 };
