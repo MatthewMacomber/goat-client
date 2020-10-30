@@ -38,6 +38,24 @@ export default class GoatAnim extends Component {
     this.updateCurrent(val2);
   }
 
+  renderSideBar = (max, currentPercent, maxPercent) => {
+    if (this.context.user) {
+      return (
+        <div className='goatAnimBar'>
+          <div id='cliff' className='cliff'><img src={require('./cliff.svg')} alt='Cliffside' /></div>
+          <div id='left' className='cliffSection left' style={{'height': maxPercent + '%'}}><p>{max} Points left</p></div>
+          <div className='goatImage'><img src={require('./goathead.svg')} width='100vw' alt='Goat head' /></div>
+          <div className='cliffSection current' style={{'height': currentPercent + '%'}}></div>
+        </div>
+      )
+    } else {
+      return (
+        <>
+        </>
+      )
+    }
+  }
+
   render() {
 
     let max = (this.state.max - this.state.current);
@@ -45,12 +63,7 @@ export default class GoatAnim extends Component {
     let maxPercent = (100 - currentPercent);
     return (
       <div className='sidebar'>
-        <div className='goatAnimBar'>
-          <div id='cliff' className='cliff'><img src={require('./cliff.svg')} alt='Cliffside' /></div>
-          <div id='left' className='cliffSection left' style={{'height': maxPercent + '%'}}><p>{max} Points left</p></div>
-          <div className='goatImage'><img src={require('./goathead.svg')} width='100vw' alt='Goat head' /></div>
-          <div className='cliffSection current' style={{'height': currentPercent + '%'}}></div>
-        </div>
+        {this.renderSideBar(max, currentPercent, maxPercent)}
       </div>
     )
   }
