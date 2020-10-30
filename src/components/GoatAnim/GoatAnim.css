@@ -2,7 +2,7 @@
   height: 80vh;
   position: fixed;
   transition: all 0.25s ease;
-  margin-top: 5%;
+  margin-top: 8%;
 }
 
 .goatAnimBar {
@@ -10,6 +10,7 @@
   height: 80vh;
   position: relative;
   background: rgba(255, 255, 255, 0.5);
+  border: solid;
 }
 
 .cliffSection {
@@ -23,6 +24,9 @@
 .cliffSection p {
   margin: 0;
   padding: 3px;
+  font-size: large;
+  color: black;
+  text-shadow: 1px 1px blue;
 }
 
 .current {
@@ -35,9 +39,38 @@
 
 .cliff {
   position: absolute;
+  height: 80vh;
+  z-index: 8;
+}
+
+.goat {
+  position: absolute;
+  z-index: 9;
+  background: rgb(0, 165, 0);
+  border-radius: 50%;
+}
+
+.cliffImage {
+  height: 80vh;
+  width: 100px;
 }
 
 .goatImage {
-  position: absolute;
-  z-index: 9;
+  width: 100px;
+  border-radius: 50%;
+}
+
+@media all and (max-width: 435px) {
+  .sidebar {
+    margin-top: 15%;
+  }
+
+  .goatAnimBar {
+    width: 50px;
+  }
+
+  .cliffImage,
+  .goatImage {
+    width: 50px;
+  }
 }

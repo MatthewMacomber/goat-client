@@ -42,9 +42,9 @@ export default class GoatAnim extends Component {
     if (true) {
       return (
         <div className='goatAnimBar'>
-          <div id='cliff' className='cliff'><img src={require('./cliff.svg')} alt='Cliffside' /></div>
+          <div id='cliff' className='cliff'><img className='cliffImage' src={require('./cliff.svg')} alt='Cliffside' /></div>
           <div id='left' className='cliffSection left' style={{'height': maxPercent + '%'}}><p>{max} Points left</p></div>
-          <div className='goatImage'><img src={require('./goathead.svg')} width='100vw' alt='Goat head' /></div>
+          <div className='goat'><img className='goatImage' src={require('./goathead.svg')} alt='Goat head' /></div>
           <div className='cliffSection current' style={{'height': currentPercent + '%'}}></div>
         </div>
       )
