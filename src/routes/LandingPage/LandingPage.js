@@ -10,7 +10,12 @@ const LandingPage = (props) => {
     <div>
       <section className="landing">
       <Main handleStart={handleStart}/>
-       </section>
+      </section>
+      <div className="demo-info">
+        <p>Demo account: 'admin'</p>
+        <p>Password: 'pass'</p>
+      </div>
+
     </div>
   );
 }
