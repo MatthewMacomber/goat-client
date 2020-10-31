@@ -40,6 +40,12 @@ body {
   }
 }
 
+@media only screen and (max-width: 450px) {
+  .AppCard {
+    width: 85%;
+  }
+}
+
 /* .App-header {
   min-height: 100vh;
   display: flex;
