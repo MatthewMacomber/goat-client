@@ -64,11 +64,13 @@ export class UserProvider extends React.Component {
       username: jwtPayload.sub
     });
     this.loadPoints();
+    window.location.reload(false);
   };
 
   processLogout = () => {
     TokenService.clearAuthToken();
     this.setUser({});
+    window.location.reload(false);
   };
 
   loadPoints = () => {
