@@ -6,3 +6,7 @@
 .form-row {
   margin: 1%;
 } 
+
+Input {
+  width: 80%;
+}
