@@ -18,7 +18,7 @@ export default class ArchivedGoals extends React.Component {
             <div>{goal.title}</div>
             <div>{goal.description}</div>
             <div>Points: {goal.points}</div>
-            <div>Date completed: {new Date(goal.end_date).toLocaleDateString("en-US")}</div>
+            {/*<div>Date completed: {new Date(goal.end_date).toLocaleDateString("en-US")}</div>*/}
           </li>
         ))}
         </ul> 
