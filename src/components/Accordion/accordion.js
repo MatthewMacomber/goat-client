@@ -13,7 +13,7 @@ export default class Accordion extends React.Component {
       html.push(
         <div>
           <p>
-            No goals yet! Create a goal to get started.
+            Create a goal to get started.
           </p>
         </div>
       )
