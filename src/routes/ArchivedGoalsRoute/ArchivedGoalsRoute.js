@@ -12,7 +12,7 @@ export default class ArchivedGoals extends React.Component {
       <div>
         <section className="goals-list-section">
         <ul className="goals-list">
-        {archivedGoals.map(goal => (
+        {archivedGoals.length === 0 ? <p>No archived goals.</p> : archivedGoals.map(goal => (
           <li className="goals-list-options" key={goal.id}>
             <div>{goal.title}</div>
             <div>{goal.description}</div>
