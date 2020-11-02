@@ -28,11 +28,11 @@ The user can also set rewards and associated point values. Once the user has eno
 Creating a goal:
 ![alt text](./screenshots/create_goal.png)
 
-Failing a goal:
-![alt text](./screenshots/failed_goal.png)
+Creating a reward:
+![alt text](./screenshots/create_reward.png)
 
-Rewards:
-![alt text](./screenshots/rewards.png)
+View past goals:
+![alt text](./screenshots/archived_goals.png)
 
 TECHNOLOGY
 --------------------------------------------------------
