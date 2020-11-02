@@ -10,6 +10,13 @@ export default class Accordion extends React.Component {
   populate = (goals) => {
     let html = [];
     if (!goals) {
+      html.push(
+        <div>
+          <p>
+            No goals yet! Create a goal to get started.
+          </p>
+        </div>
+      )
       return html;
     }
     for(let goal of goals){
