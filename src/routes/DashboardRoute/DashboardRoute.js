@@ -61,9 +61,11 @@ class DashboardRoute extends React.Component {
   }
 
   renderGoalsPage = () => {
+    const goals = this.context.goals.filter(goal => !goal.complete && !goal.archive);
     return (
       <div className='goalControl'>
-        <Accordion goals={this.context.goals.filter(goal => !goal.complete && !goal.archive)} onCompleteClicked={this.setCompletingGoal} onIncompleteClicked={this.setIncomplete}/>
+        {goals.length <= 0 && <p>No Goals Set Up!</p>}
+        {goals.length > 0 && <Accordion goals={goals} onCompleteClicked={this.setCompletingGoal} onIncompleteClicked={this.setIncomplete}/>}
         <div className='dashButtons'>
           <button onClick={() => this.handleClickCreate()}>Create New Goal</button>
           <button onClick={() => this.handleRewardList()}>View Rewards</button>

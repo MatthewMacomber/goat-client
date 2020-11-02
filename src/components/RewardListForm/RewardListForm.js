@@ -42,11 +42,14 @@ export default class RewardListForm extends Component{
   }
 
   renderRewards = () => {
+    const {rewards} = this.context;
     return (
       <div>
       <section className="rewards-list-section">
+      <h2>Rewards</h2>
       <ul className="rewards-list">
-      {this.context.rewards && this.context.rewards.map(reward => (
+      {rewards.length <= 0 && <p>No Rewards Set Up!</p>}
+      {rewards.length > 0 && rewards.map(reward => (
         <li className="rewards-list-options" key={reward.id}>
           <div>Reward: {reward.title}</div>
           <div>{reward.description}</div>
