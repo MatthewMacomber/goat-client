@@ -29,9 +29,9 @@
 }
 
 
-Input {
+.login-form Input {
   height: 5px;
-  width: 250%;
+  width: 250%
 }
 
 .NeedLink {
